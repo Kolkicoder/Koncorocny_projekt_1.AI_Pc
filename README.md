@@ -1,0 +1,1 @@
+# Koncorocny_projekt_1.AI_Pc
