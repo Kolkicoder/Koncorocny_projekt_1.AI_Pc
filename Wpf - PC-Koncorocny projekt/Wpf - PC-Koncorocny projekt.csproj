@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RootNamespace>Wpf___PC_Koncorocny_projekt</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="360_F_532772075_m3wMcapw93ZFGWBjs3rCcZG1NJGxeben.jpg" />
+    <None Remove="ChatGPT Image 22. 2. 2026, 13_08_46.png" />
+    <None Remove="Krionix_loading_custom_sound.mp4" />
+    <None Remove="pictures\Blue Purple Neon Welcome To My Music Channel Video.mp4" />
+    <None Remove="pictures\ChatGPT Image 4. 3. 2026, 12_50_39.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="pictures\Blue Purple Neon Welcome To My Music Channel Video.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="pictures\360_F_532772075_m3wMcapw93ZFGWBjs3rCcZG1NJGxeben.jpg" />
+    <Resource Include="pictures\ChatGPT Image 22. 2. 2026, 13_08_46.png" />
+    <Resource Include="pictures\ChatGPT Image 4. 3. 2026, 12_50_39.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

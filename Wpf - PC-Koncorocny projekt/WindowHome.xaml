@@ -1,0 +1,14 @@
+﻿<Window x:Class="Wpf___PC_Koncorocny_projekt.WindowHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf___PC_Koncorocny_projekt"
+        mc:Ignorable="d"
+        Title="WindowHome" Height="500" Width="800">
+    <Grid Background="White">
+        <Image HorizontalAlignment="Left" Height="480" VerticalAlignment="Top" Width="797"/>
+        <Image x:Name="HomeTapeta" Source="/ChatGPT Image 4. 3. 2026, 12_50_39.png" Stretch="Fill"/>
+        <Image Source="/pictures/ChatGPT Image 4. 3. 2026, 12_50_39.png" Stretch="Fill"/>
+    </Grid>
+</Window>
