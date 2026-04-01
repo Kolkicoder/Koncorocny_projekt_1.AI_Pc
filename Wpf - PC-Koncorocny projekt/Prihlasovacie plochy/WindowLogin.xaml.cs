@@ -17,49 +17,49 @@ namespace Wpf___PC_Koncorocny_projekt
         {
             InitializeComponent();
         }
-       
+
         private async void UserButton_Click(object sender, RoutedEventArgs e)
         {   // AI    
             LoginControls.Visibility = Visibility.Collapsed;
             LoadingOverlay.Visibility = Visibility.Visible;
-                        
+
             Storyboard sb = (Storyboard)this.FindResource("RotateLoading");
             sb.Begin();
             //
-            
-            await Task.Delay(5000);                       
+
+            await Task.Delay(5000);
             WindowHome home = new WindowHome();
             home.Show();
             this.Close();
 
         }
-       
+
         private void UserButton_Click_1(object sender, RoutedEventArgs e)
         {   //Ai       
             BlurEffect myBlur = new BlurEffect();
             myBlur.Radius = 15;
             //
 
-            MainContentGrid.Effect = myBlur;           
+            MainContentGrid.Effect = myBlur;
             NewUserModal.Visibility = Visibility.Visible;
 
         }
-       
+
         private void CloseModal_Click(object sender, RoutedEventArgs e)
         {
             NewUserModal.Visibility = Visibility.Collapsed;
-            MainContentGrid.Effect = null; 
+            MainContentGrid.Effect = null;
 
         }
-        
+
         private void CloseModal_Click_1(object sender, MouseButtonEventArgs e)
         {
             NewUserModal.Visibility = Visibility.Collapsed;
-            MainContentGrid.Effect = null; 
+            MainContentGrid.Effect = null;
         }
-        
+
         private void SetingButton_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             if (PowerMenuOverlay.Visibility == Visibility.Visible)
             {
                 PowerMenuOverlay.Visibility = Visibility.Collapsed;
@@ -69,8 +69,8 @@ namespace Wpf___PC_Koncorocny_projekt
                 PowerMenuOverlay.Visibility = Visibility.Visible;
             }
 
-        }    
-        
+        }
+
         private void Lock_Click(object sender, RoutedEventArgs e)
         {
             PowerMenuOverlay.Visibility = Visibility.Collapsed;
@@ -79,7 +79,7 @@ namespace Wpf___PC_Koncorocny_projekt
         }
 
         private void Sleep_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             WindowHome home = new WindowHome();
             home.Show();
             this.Close();
@@ -87,7 +87,7 @@ namespace Wpf___PC_Koncorocny_projekt
         }
 
         private void Shutdown_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             MainWindow offWindow = new MainWindow();
             offWindow.Show();
             this.Close();
@@ -95,7 +95,7 @@ namespace Wpf___PC_Koncorocny_projekt
         }
 
         private void Restart_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             WindowLoading loading = new WindowLoading();
             loading.Show();
             this.Close();

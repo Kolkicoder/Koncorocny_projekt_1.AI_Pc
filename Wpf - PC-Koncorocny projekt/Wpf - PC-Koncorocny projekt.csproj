@@ -13,18 +13,18 @@
     <None Remove="360_F_532772075_m3wMcapw93ZFGWBjs3rCcZG1NJGxeben.jpg" />
     <None Remove="ChatGPT Image 22. 2. 2026, 13_08_46.png" />
     <None Remove="Krionix_loading_custom_sound.mp4" />
-    <None Remove="pictures\Blue Purple Neon Welcome To My Music Channel Video.mp4" />
     <None Remove="pictures\ChatGPT Image 4. 3. 2026, 12_50_39.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="pictures\Blue Purple Neon Welcome To My Music Channel Video.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Page Remove="nepotrebne okna\App.xaml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="pictures\360_F_532772075_m3wMcapw93ZFGWBjs3rCcZG1NJGxeben.jpg" />
+    <ApplicationDefinition Include="nepotrebne okna\App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="pictures\ChatGPT Image 22. 2. 2026, 13_08_46.png" />
     <Resource Include="pictures\ChatGPT Image 4. 3. 2026, 12_50_39.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

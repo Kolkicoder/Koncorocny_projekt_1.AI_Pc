@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
@@ -17,9 +18,41 @@ namespace Wpf___PC_Koncorocny_projekt
     /// </summary>
     public partial class WindowHome : Window
     {
-        public WindowHome()
+       public WindowHome()
         {
-            InitializeComponent();
+            InitializeComponent();                       
+            StartClockLogic();
+                        
+            BtnGoogle.Click += BtnGoogle_Click;
+            BtnPexeso.Click += BtnPexeso_Click;
+        }
+
+        private void StartClockLogic()
+        {            
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (s, e) => 
+            {                
+                TxtTime.Text = DateTime.Now.ToString("HH:mm:ss");
+                TxtDate.Text = DateTime.Now.ToString("d. M. yyyy");
+
+            };
+                       
+            TxtTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            TxtDate.Text = DateTime.Now.ToString("d. M. yyyy");
+
+            timer.Start();
+        }
+       
+        private void BtnGoogle_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+       
+        private void BtnPexeso_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

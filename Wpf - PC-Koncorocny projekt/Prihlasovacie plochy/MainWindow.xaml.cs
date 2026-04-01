@@ -16,33 +16,19 @@ namespace Wpf___PC_Koncorocny_projekt
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool escPressed = false;
-
         public MainWindow()
         {
             InitializeComponent();
-
-            this.KeyDown += MainWindow_KeyDown;
         }
 
-        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                escPressed = true;
-            }
-            else if (e.Key == Key.O && escPressed)
-            {
-                escPressed = false;
-                
-                WindowLoading secondWindow = new WindowLoading();
-                secondWindow.Show();
-            }
-            else
-            {
-                escPressed = false;
-            }
+        private async void BtnPower_Click(object sender, RoutedEventArgs e)
+        {            
+            BtnPower.Visibility = Visibility.Collapsed;                       
+            await Task.Delay(5000);
+                       
+            WindowLoading loadingWindow = new WindowLoading();
+            loadingWindow.Show();           
+            this.Close();
         }
-        
     }
 }
