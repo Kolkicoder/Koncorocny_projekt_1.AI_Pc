@@ -40,9 +40,11 @@ namespace Wpf___PC_Koncorocny_projekt
                 this.Close();
             };
             
+            //AI
             clipRect.BeginAnimation(RectangleGeometry.RectProperty, animation);
             ProgressBarFill.BeginAnimation(FrameworkElement.WidthProperty, progressAnim);
-                        
+            //
+            
             CompositionTarget.Rendering += (s, e) => 
             {
                 if (ProgressBarFill.Width > 0)

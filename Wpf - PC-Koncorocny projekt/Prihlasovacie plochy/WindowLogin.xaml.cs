@@ -19,13 +19,14 @@ namespace Wpf___PC_Koncorocny_projekt
         }
        
         private async void UserButton_Click(object sender, RoutedEventArgs e)
-        {            
+        {   // AI    
             LoginControls.Visibility = Visibility.Collapsed;
             LoadingOverlay.Visibility = Visibility.Visible;
                         
             Storyboard sb = (Storyboard)this.FindResource("RotateLoading");
             sb.Begin();
-                       
+            //
+            
             await Task.Delay(5000);                       
             WindowHome home = new WindowHome();
             home.Show();
@@ -34,9 +35,10 @@ namespace Wpf___PC_Koncorocny_projekt
         }
        
         private void UserButton_Click_1(object sender, RoutedEventArgs e)
-        {           
+        {   //Ai       
             BlurEffect myBlur = new BlurEffect();
             myBlur.Radius = 15;
+            //
 
             MainContentGrid.Effect = myBlur;           
             NewUserModal.Visibility = Visibility.Visible;
