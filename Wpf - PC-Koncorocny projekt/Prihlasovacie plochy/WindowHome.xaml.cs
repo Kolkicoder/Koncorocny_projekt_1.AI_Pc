@@ -18,41 +18,49 @@ namespace Wpf___PC_Koncorocny_projekt
     /// </summary>
     public partial class WindowHome : Window
     {
-       public WindowHome()
+        public WindowHome()
         {
-            InitializeComponent();                       
+            InitializeComponent();
             StartClockLogic();
-                        
+
             BtnGoogle.Click += BtnGoogle_Click;
             BtnPexeso.Click += BtnPexeso_Click;
         }
 
         private void StartClockLogic()
-        {            
+        {
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += (s, e) => 
-            {                
+            timer.Tick += (s, e) =>
+            {
                 TxtTime.Text = DateTime.Now.ToString("HH:mm:ss");
                 TxtDate.Text = DateTime.Now.ToString("d. M. yyyy");
 
             };
-                       
+
             TxtTime.Text = DateTime.Now.ToString("HH:mm:ss");
             TxtDate.Text = DateTime.Now.ToString("d. M. yyyy");
 
             timer.Start();
         }
-       
+
         private void BtnGoogle_Click(object sender, RoutedEventArgs e)
         {
-           
+            Window googleWindow = new Google_domov();
+            googleWindow.Show();
         }
 
-       
+
         private void BtnPexeso_Click(object sender, RoutedEventArgs e)
         {
-            
+            Window pexesoWindow = new Window();
+            pexesoWindow.Show();
         }
+        
     }
 }
+
+
+   
+
+
