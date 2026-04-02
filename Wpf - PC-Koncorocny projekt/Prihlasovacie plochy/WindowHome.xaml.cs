@@ -48,6 +48,7 @@ namespace Wpf___PC_Koncorocny_projekt
         {
             Window googleWindow = new Google_domov();
             googleWindow.Show();
+            this.Close();
         }
 
 
@@ -55,6 +56,7 @@ namespace Wpf___PC_Koncorocny_projekt
         {
             Window pexesoWindow = new Window();
             pexesoWindow.Show();
+            this.Close();
         }
         
     }
