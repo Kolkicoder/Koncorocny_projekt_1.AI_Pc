@@ -9,17 +9,30 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
     /// <summary>
     /// Interaction logic for Google_domov.xaml
     /// </summary>
+
     public partial class Google_domov : Window
     {
         public Google_domov()
         {
             InitializeComponent();
         }
+               
+        private void SearchInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {                
+                ResultsDisplay.Visibility = Visibility.Visible;
+                                
+            }
+        }
     }
 }
+
+// HISTORIA VYHLADAVANIA !!!!!

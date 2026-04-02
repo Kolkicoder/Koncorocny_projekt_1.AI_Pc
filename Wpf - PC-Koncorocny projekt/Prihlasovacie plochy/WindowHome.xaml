@@ -1,93 +1,152 @@
 ﻿<Window x:Class="Wpf___PC_Koncorocny_projekt.WindowHome"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Krionix Desktop" Height="600" Width="1000" WindowState="Maximized" WindowStyle="None">
+        Title="Krionix Desktop" Height="600" Width="1000" 
+        WindowState="Maximized" WindowStyle="None" Background="#020205">
 
-    <Grid Background="Black">
-        <Image x:Name="HomeTapeta" Source="/pictures/ChatGPT Image 4. 3. 2026, 12_50_39.png" Stretch="UniformToFill">
-            <Image.Effect>
-                <BlurEffect Radius="15"/>
-            </Image.Effect>
-        </Image>
-
-        <Rectangle Fill="#66000000"/>
+    <Grid>
+        <Grid>
+            <Image x:Name="HomeTapeta" Source="/pictures/ChatGPT Image 4. 3. 2026, 12_50_39.png" Stretch="UniformToFill">
+                <Image.Effect>
+                    <BlurEffect Radius="25"/>
+                </Image.Effect>
+            </Image>
+            <Rectangle>
+                <Rectangle.Fill>
+                    <RadialGradientBrush Center="0.5,0.5" RadiusX="1" RadiusY="1">
+                        <GradientStop Color="#CC020205" Offset="1"/>
+                        <GradientStop Color="#661A1A2E" Offset="0"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
 
         <Grid>
-            <Border VerticalAlignment="Top" Height="40" Background="#44000000" BorderBrush="#22FFFFFF" BorderThickness="0,0,0,1">
-                <Grid Margin="20,0">
+            <Border VerticalAlignment="Top" Height="45" Background="#15FFFFFF" BorderThickness="0,0,0,1">
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="Transparent" Offset="0"/>
+                        <GradientStop Color="#00FFFF" Offset="0.5"/>
+                        <GradientStop Color="Transparent" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <Grid Margin="25,0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Path Data="M10,0 L18.6,5 L18.6,15 L10,20 L1.4,15 L1.4,5 Z" Fill="#00F2FF" Width="16" Height="16" Margin="0,0,10,0"/>
-                        <TextBlock Text="KRIONIX OS" Foreground="White" FontSize="11" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <Path Data="M10,0 L18.6,5 L18.6,15 L10,20 L1.4,15 L1.4,5 Z" Fill="#00FFFF" Width="16" Height="16" Margin="0,0,12,0">
+                            <Path.Effect>
+                                <DropShadowEffect Color="#00FFFF" BlurRadius="10" ShadowDepth="0"/>
+                            </Path.Effect>
+                        </Path>
+                        <TextBlock Text="KRIONIX OS // MAIN TERMINAL" Foreground="White" FontSize="10" FontWeight="Bold" VerticalAlignment="Center"/>
                     </StackPanel>
-                    <TextBlock Text="SYSTEM SECURED" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#00F2FF" FontSize="9"/>
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Ellipse Width="8" Height="8" Fill="#00FF88" Margin="0,0,10,0"/>
+                        <TextBlock Text="ENCRYPTED SESSION ACTIVE" Foreground="#00FFFF" FontSize="9" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </StackPanel>
                 </Grid>
             </Border>
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="W E L C O M E" Foreground="#AAFFFFFF" FontSize="16" HorizontalAlignment="Center"/>
-                <TextBlock Text="KRIONIX" Foreground="White" FontSize="86" FontWeight="Black" HorizontalAlignment="Center">
+                <TextBlock Text="SYSTEM INTERFACE" Foreground="#60FFFFFF" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBlock Text="KRIONIX" FontSize="100" FontWeight="Black" HorizontalAlignment="Center">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#00FFFF" Offset="0.5"/>
+                            <GradientStop Color="#D000FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
                     <TextBlock.Effect>
-                        <DropShadowEffect Color="#00F2FF" BlurRadius="25" ShadowDepth="0" Opacity="0.6"/>
+                        <DropShadowEffect Color="#00FFFF" BlurRadius="50" Opacity="0.4" ShadowDepth="0"/>
                     </TextBlock.Effect>
                 </TextBlock>
 
-                <UniformGrid Columns="2" Margin="0,40,0,0" Width="420">
-                    <Button x:Name="BtnGoogle" Height="65" Margin="10" Background="#22FFFFFF" BorderBrush="#00F2FF" BorderThickness="1" Foreground="White" Cursor="Hand" Click="BtnGoogle_Click">
+                <UniformGrid Columns="2" Margin="0,50,0,0" Width="500">
+                    <Button x:Name="BtnGoogle" Height="80" Margin="15" Cursor="Hand" Click="BtnGoogle_Click" BorderThickness="0" Background="Transparent">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="#10FFFFFF" CornerRadius="20" BorderThickness="1.5" BorderBrush="#30FFFFFF">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#2000FFFF"/>
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#00FFFF"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="G" FontWeight="Bold" FontSize="22" Margin="0,0,12,0" Foreground="#00F2FF"/>
-                            <TextBlock Text="GOOGLE CHROME" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <TextBlock Text="🌐" FontSize="24" Margin="0,0,15,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="NET EXPLORER" Foreground="White" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"/>
                         </StackPanel>
                     </Button>
 
-                    <Button x:Name="BtnPexeso" Height="65" Margin="10" Background="#22FFFFFF" BorderBrush="#00F2FF" BorderThickness="1" Foreground="White" Cursor="Hand">
+                    <Button x:Name="BtnPexeso" Height="80" Margin="15" Cursor="Hand" BorderThickness="0" Background="Transparent">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="#10FFFFFF" CornerRadius="20" BorderThickness="1.5" BorderBrush="#30FFFFFF">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#20D000FF"/>
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#D000FF"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="🎮" FontSize="22" Margin="0,0,12,0"/>
-                            <TextBlock Text="PEXESO HRA" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <TextBlock Text="🎮" FontSize="24" Margin="0,0,15,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="CORE GAME" Foreground="White" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"/>
                         </StackPanel>
                     </Button>
                 </UniformGrid>
             </StackPanel>
 
-            <Border VerticalAlignment="Bottom" Height="55" Background="#E5101010" BorderBrush="#33FFFFFF" BorderThickness="0,1,0,0">
-                <Grid Margin="15,0">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.9">
-                        <TextBlock Text="☁️" FontSize="20" VerticalAlignment="Center" Margin="5,0,8,0"/>
+            <Border VerticalAlignment="Bottom" Height="65" Background="#D8020205" BorderBrush="#20FFFFFF" BorderThickness="0,1,0,0">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="-2" Opacity="0.5"/>
+                </Border.Effect>
+                <Grid Margin="20,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBlock Text="☁" Foreground="#00FFFF" FontSize="24" VerticalAlignment="Center" Margin="10,0,15,0"/>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="7°C" Foreground="White" FontSize="11" FontWeight="Bold"/>
-                            <TextBlock Text="Slabý déšť" Foreground="#AAFFFFFF" FontSize="9"/>
+                            <TextBlock Text="7°C / CLOUDY" Foreground="White" FontSize="11" FontWeight="Bold"/>
+                            <TextBlock Text="BRATISLAVA, SK" Foreground="#60FFFFFF" FontSize="9" FontWeight="Bold"/>
                         </StackPanel>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Grid Margin="5,0" Cursor="Hand">
-                            <Rectangle Width="28" Height="28" Fill="#00A4EF" RadiusX="3" RadiusY="3"/>
-                            <Path Data="M2,2 H10 V10 H2 Z M12,2 H20 V10 H12 Z M2,12 H10 V20 H2 Z M12,12 H20 V20 H12 Z" 
-                                  Fill="White" Stretch="Uniform" Margin="6"/>
-                        </Grid>
-
-                        <Border Background="#22FFFFFF" CornerRadius="15" Width="180" Height="32" Margin="12,0">
-                            <StackPanel Orientation="Horizontal" Margin="12,0">
-                                <TextBlock Text="🔍" Foreground="#99FFFFFF" VerticalAlignment="Center" FontSize="12"/>
-                                <TextBlock Text="Hľadať v systéme..." Foreground="#99FFFFFF" VerticalAlignment="Center" FontSize="11" Margin="10,0"/>
-                            </StackPanel>
+                        <Border Width="40" Height="40" CornerRadius="10" Background="#3000FFFF" Margin="5,0" Cursor="Hand">
+                            <TextBlock Text="" FontFamily="Segoe MDL2 Assets" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
 
-                        <TextBlock Text="📁" FontSize="24" Margin="10,0" VerticalAlignment="Center" Cursor="Hand"/>
-                        <TextBlock Text="🌐" FontSize="24" Margin="10,0" VerticalAlignment="Center" Cursor="Hand"/>
-                        <TextBlock Text="🎵" FontSize="24" Margin="10,0" VerticalAlignment="Center" Cursor="Hand"/>
+                        <Border Background="#10FFFFFF" CornerRadius="20" Width="220" Height="36" Margin="15,0" BorderThickness="1" BorderBrush="#20FFFFFF">
+                            <Grid Margin="15,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🔍" Foreground="#60FFFFFF" VerticalAlignment="Center" FontSize="12"/>
+                                    <TextBlock Text="QUERY SYSTEM..." Foreground="#60FFFFFF" VerticalAlignment="Center" FontSize="11" Margin="12,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock Text="📁" Foreground="White" Opacity="0.7" FontSize="22" Margin="12,0" VerticalAlignment="Center" Cursor="Hand"/>
+                        <TextBlock Text="⚙" Foreground="White" Opacity="0.7" FontSize="22" Margin="12,0" VerticalAlignment="Center" Cursor="Hand"/>
+                        <TextBlock Text="🎵" Foreground="White" Opacity="0.7" FontSize="22" Margin="12,0" VerticalAlignment="Center" Cursor="Hand"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal" Margin="0,0,20,0" Opacity="0.8">
-                            <TextBlock Text="ENG" Foreground="White" FontSize="11" Margin="10,0" VerticalAlignment="Center"/>
-                            <TextBlock Text="📶" Foreground="White" FontSize="14" Margin="6,0" VerticalAlignment="Center"/>
-                            <TextBlock Text="🔊" Foreground="White" FontSize="14" Margin="6,0" VerticalAlignment="Center"/>
-                            <TextBlock Text="🔋 99%" Foreground="White" FontSize="11" Margin="6,0" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,25,0">
+                            <TextBlock Text="📶" Foreground="#00FFFF" FontSize="14" Margin="8,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="🔋 99%" Foreground="White" FontSize="10" FontWeight="Bold" Margin="8,0" VerticalAlignment="Center"/>
                         </StackPanel>
 
-                        <StackPanel VerticalAlignment="Center" MinWidth="70">
-                            <TextBlock x:Name="TxtTime" Text="19:00" Foreground="White" FontSize="12" HorizontalAlignment="Right" FontWeight="Bold"/>
-                            <TextBlock x:Name="TxtDate" Text="1. 4. 2026" Foreground="#AAFFFFFF" FontSize="10" HorizontalAlignment="Right"/>
+                        <Rectangle Width="1" Height="30" Fill="#20FFFFFF" Margin="0,0,20,0"/>
+
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock x:Name="TxtTime" Text="19:00" Foreground="White" FontSize="14" HorizontalAlignment="Right" FontWeight="Black"/>
+                            <TextBlock x:Name="TxtDate" Text="01. 04. 2026" Foreground="#60FFFFFF" FontSize="9" HorizontalAlignment="Right" FontWeight="Bold"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

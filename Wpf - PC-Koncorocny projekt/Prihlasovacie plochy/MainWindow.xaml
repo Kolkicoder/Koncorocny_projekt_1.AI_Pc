@@ -5,35 +5,67 @@
         WindowState="Maximized" WindowStyle="None" Background="Black">
 
     <Grid x:Name="MainGrid">
+        <Grid.Background>
+            <SolidColorBrush Color="Black"/>
+        </Grid.Background>
 
         <Button x:Name="BtnPower" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                Margin="0,0,40,40" Width="45" Height="45" Cursor="Hand"
+                Margin="0,0,50,50" Width="60" Height="60" Cursor="Hand"
                 Visibility="Visible" Click="BtnPower_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Ellipse Fill="#00F2FF" Opacity="0.2">
+                        <Ellipse Fill="#00FFFF" Opacity="0.4">
                             <Ellipse.Effect>
-                                <BlurEffect Radius="15"/>
+                                <BlurEffect Radius="35"/>
                             </Ellipse.Effect>
                         </Ellipse>
 
-                        <Ellipse Stroke="#00F2FF" StrokeThickness="1.5" Fill="#05FFFFFF"/>
+                        <Ellipse StrokeThickness="2.5" Fill="#05FFFFFF">
+                            <Ellipse.Stroke>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#00FFFF" Offset="0"/>
+                                    <GradientStop Color="#D000FF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Ellipse.Stroke>
+                            <Ellipse.Effect>
+                                <DropShadowEffect Color="#00FFFF" BlurRadius="10" ShadowDepth="0" Opacity="0.5"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
 
-                        <Canvas Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Path Data="M22.5,10 V23 M16.5,16.5 A10,10 0 1,0 28.5,16.5" 
-                                  Stroke="#00F2FF" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
-                                  Canvas.Left="0" Canvas.Top="0"/>
+                        <Canvas Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Data="M30,15 V32 M22,22 A13,13 0 1,0 38,22" 
+                                  StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+                                  StrokeThickness="3.5" Canvas.Left="0" Canvas.Top="0">
+                                <Path.Stroke>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="White" Offset="0"/>
+                                        <GradientStop Color="#00FFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Stroke>
+                                <Path.Effect>
+                                    <DropShadowEffect Color="#00FFFF" BlurRadius="20" ShadowDepth="0" Opacity="0.9"/>
+                                </Path.Effect>
+                            </Path>
                         </Canvas>
                     </Grid>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="0.9"/>
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.15" ScaleY="1.15"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Opacity" Value="1.0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
+            <Button.RenderTransformOrigin>
+                <Point X="0.5" Y="0.5"/>
+            </Button.RenderTransformOrigin>
         </Button>
+
     </Grid>
 </Window>

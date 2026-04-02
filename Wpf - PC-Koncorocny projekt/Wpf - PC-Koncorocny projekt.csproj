@@ -6,7 +6,7 @@
     <RootNamespace>Wpf___PC_Koncorocny_projekt</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
+    <UseWPF>true</UseWPF>	
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,10 +29,6 @@
     <Resource Include="pictures\ChatGPT Image 4. 3. 2026, 12_50_39.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="google\" />
   </ItemGroup>
 
 </Project>
