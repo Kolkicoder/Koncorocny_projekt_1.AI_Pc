@@ -1,8 +1,8 @@
 ﻿<Window x:Class="Wpf___PC_Koncorocny_projekt.WindowLogin"
-       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-       Title="Krionix Auth" Height="500" Width="800"
-       WindowState="Maximized" WindowStyle="None" Background="#020205">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Krionix Auth" Height="500" Width="800"
+        WindowState="Maximized" WindowStyle="None" Background="#020205">
 
     <Window.Resources>
         <Storyboard x:Key="RotateLoading">
@@ -70,7 +70,7 @@
 
                             <TextBlock Text="IDENTIFICATION / USERNAME" Foreground="#60FFFFFF" FontSize="9" FontWeight="Bold" Margin="0,0,0,8"/>
                             <Border CornerRadius="10" Background="#15000000" BorderThickness="1" BorderBrush="#30FFFFFF" Margin="0,0,0,20">
-                                <TextBox x:Name="UserNameTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="12,0" CaretBrush="#00FFFF" TextChanged="UserNameTxt_TextChanged"/>
+                                <TextBox x:Name="UserNameTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="12,0" CaretBrush="#00FFFF"/>
                             </Border>
 
                             <TextBlock Text="SECURITY KEY / PASSWORD" Foreground="#60FFFFFF" FontSize="9" FontWeight="Bold" Margin="0,0,0,8"/>
@@ -140,18 +140,31 @@
                 <Grid.Background>
                     <SolidColorBrush Color="Black" Opacity="0.8"/>
                 </Grid.Background>
-                <Border Width="320" Height="240" Background="#1A1A2E" CornerRadius="20" BorderBrush="#D000FF" BorderThickness="1.5" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Border Width="360" Height="440" Background="#1A1A2E" CornerRadius="20" BorderBrush="#D000FF" BorderThickness="1.5" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Border.Effect>
                         <DropShadowEffect Color="#D000FF" BlurRadius="30" Opacity="0.4" ShadowDepth="0"/>
                     </Border.Effect>
                     <StackPanel Margin="30">
-                        <TextBlock Text="NEW SESSION" Foreground="#00FFFF" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,25"/>
-                        <Border CornerRadius="8" Background="#10FFFFFF" BorderThickness="0,0,0,1" BorderBrush="#00FFFF">
-                            <TextBox Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="10,0" CaretBrush="White"/>
+                        <TextBlock Text="NEW SESSION / REGISTRATION" Foreground="#00FFFF" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                        <TextBlock Text="NEW USERNAME" Foreground="#60FFFFFF" FontSize="9" Margin="0,0,0,5"/>
+                        <Border CornerRadius="8" Background="#10FFFFFF" BorderThickness="0,0,0,1" BorderBrush="#00FFFF" Margin="0,0,0,15">
+                            <TextBox x:Name="NewUserTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="10,0" CaretBrush="White"/>
                         </Border>
-                        <UniformGrid Columns="2" Margin="0,35,0,0" Height="45">
+
+                        <TextBlock Text="NEW PASSWORD" Foreground="#60FFFFFF" FontSize="9" Margin="0,0,0,5"/>
+                        <Border CornerRadius="8" Background="#10FFFFFF" BorderThickness="0,0,0,1" BorderBrush="#D000FF" Margin="0,0,0,15">
+                            <PasswordBox x:Name="NewPassTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="10,0" CaretBrush="White"/>
+                        </Border>
+
+                        <TextBlock Text="CONFIRM PASSWORD" Foreground="#60FFFFFF" FontSize="9" Margin="0,0,0,5"/>
+                        <Border CornerRadius="8" Background="#10FFFFFF" BorderThickness="0,0,0,1" BorderBrush="#D000FF" Margin="0,0,0,25">
+                            <PasswordBox x:Name="NewPassConfirmTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="10,0" CaretBrush="White"/>
+                        </Border>
+
+                        <UniformGrid Columns="2" Height="45">
                             <Button Content="CANCEL" Click="CloseModal_Click" Background="Transparent" Foreground="#60FFFFFF" BorderThickness="0" Cursor="Hand"/>
-                            <Button Click="CloseModal_Click" Cursor="Hand" BorderThickness="0">
+                            <Button x:Name="ConfirmRegistrationBtn" Click="ConfirmRegistrationBtn_Click" Cursor="Hand" BorderThickness="0">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="#D000FF" CornerRadius="8">
@@ -159,7 +172,7 @@
                                         </Border>
                                     </ControlTemplate>
                                 </Button.Template>
-                                <TextBlock Text="PROCEED" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="REGISTER" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </UniformGrid>
                     </StackPanel>
