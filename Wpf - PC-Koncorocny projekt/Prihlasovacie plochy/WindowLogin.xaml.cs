@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 
@@ -25,7 +26,7 @@ namespace Wpf___PC_Koncorocny_projekt
         {
             InitializeComponent();
         }
-       
+
         private async void UserButton_Click(object sender, RoutedEventArgs e)
         {
             string inputUser = UserNameTxt.Text;
@@ -53,52 +54,54 @@ namespace Wpf___PC_Koncorocny_projekt
             }
             else
             {
-                MessageBox.Show("Invalid credentials. Access Denied.", "Security", MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show("Invalid credentials. Please register if you are a new operator.", "Access Denied", MessageBoxButton.OK, MessageBoxImage.Stop);
             }
         }
-       
+
         private void ConfirmRegistrationBtn_Click(object sender, RoutedEventArgs e)
         {
             string newUser = NewUserTxt.Text;
             string newPass = NewPassTxt.Password;
-            string confirmPass = NewPassConfirmTxt.Password;
-                        
+            string confirmPass = ConfirmPassTxt.Password; // Načítanie potvrdenia
+
             if (string.IsNullOrWhiteSpace(newUser) || string.IsNullOrWhiteSpace(newPass))
             {
-                MessageBox.Show("Username and password cannot be empty.", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Registration failed. Data missing.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-                        
+
+            // OVERENIE ZHODY HESIEL
             if (newPass != confirmPass)
             {
-                MessageBox.Show("Passwords do not match! Please re-type.", "Security Breach", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Passwords do not match!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             try
             {
                 List<UserCredentials> users = LoadUsers();
-                                
+
                 if (users.Any(u => u.Username.Equals(newUser, StringComparison.OrdinalIgnoreCase)))
                 {
-                    MessageBox.Show("This username is already registered in the system.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("This operator already exists!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-               
+
                 users.Add(new UserCredentials { Username = newUser, Password = newPass });
+
                 string jsonString = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(jsonPath, jsonString);
 
-                MessageBox.Show("New operator added to database.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                                
+                MessageBox.Show("Operator registered successfully. You can now login.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 NewUserTxt.Clear();
                 NewPassTxt.Clear();
-                NewPassConfirmTxt.Clear();
+                ConfirmPassTxt.Clear(); // Vyčistenie
                 CloseModal_Click(null, null);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Database error: {ex.Message}");
+                MessageBox.Show($"System error: {ex.Message}");
             }
         }
 
@@ -118,10 +121,11 @@ namespace Wpf___PC_Koncorocny_projekt
             var users = LoadUsers();
             return users.Any(u => u.Username == user && u.Password == pass);
         }
-       
+
         private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
         {
-            MainContentGrid.Effect = new BlurEffect { Radius = 15 };
+            BlurEffect myBlur = new BlurEffect { Radius = 15 };
+            MainContentGrid.Effect = myBlur;
             NewUserModal.Visibility = Visibility.Visible;
         }
 
@@ -139,11 +143,38 @@ namespace Wpf___PC_Koncorocny_projekt
         private void Lock_Click(object sender, RoutedEventArgs e)
         {
             PowerMenuOverlay.Visibility = Visibility.Collapsed;
-            MessageBox.Show("System locked.", "Security", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("The system has been locked.", "Security", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void Sleep_Click(object sender, RoutedEventArgs e) { /* ... tvoj kód ... */ }
-        private void Shutdown_Click(object sender, RoutedEventArgs e) { /* ... tvoj kód ... */ }
-        private void Restart_Click(object sender, RoutedEventArgs e) { /* ... tvoj kód ... */ }
+        // UPRAVENÉ TLAČIDLO SLEEP
+        private void Sleep_Click(object sender, RoutedEventArgs e)
+        {
+            PowerMenuOverlay.Visibility = Visibility.Collapsed;
+            SleepOverlay.Visibility = Visibility.Visible; // Zobrazí čiernu plochu
+        }
+
+        // EVENT PRE PREBUDENIE Z REŽIMU SPÁNKU
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (SleepOverlay.Visibility == Visibility.Visible)
+            {
+                SleepOverlay.Visibility = Visibility.Collapsed; // Skryje čiernu plochu
+                // UI sa vráti do stavu Login, keďže okno nebolo zatvorené
+            }
+        }
+
+        private void Shutdown_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow off = new MainWindow();
+            off.Show();
+            this.Close();
+        }
+
+        private void Restart_Click(object sender, RoutedEventArgs e)
+        {
+            WindowLoading loading = new WindowLoading();
+            loading.Show();
+            this.Close();
+        }
     }
 }
