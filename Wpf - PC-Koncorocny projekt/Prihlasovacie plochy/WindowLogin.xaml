@@ -45,7 +45,7 @@
                         <Border.BorderBrush>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#00FFFF" Offset="0"/>
-                                <GradientStop Color="#D000FF" Offset="1"/>
+                               
                             </LinearGradientBrush>
                         </Border.BorderBrush>
                         <Border.Effect>
@@ -57,9 +57,10 @@
                                 <TextBlock Text="KRIONIX" FontSize="32" FontWeight="Black" HorizontalAlignment="Center">
                                     <TextBlock.Foreground>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="White" Offset="0"/>
-                                            <GradientStop Color="#00FFFF" Offset="0.5"/>
-                                            <GradientStop Color="#D000FF" Offset="1"/>
+
+                                            <GradientStop Color="White" Offset="0.5"/>
+                                            
+                                            
                                         </LinearGradientBrush>
                                     </TextBlock.Foreground>
                                 </TextBlock>
@@ -68,19 +69,20 @@
                                     <Rectangle.Fill>
                                         <LinearGradientBrush>
                                             <GradientStop Color="#00FFFF" Offset="0"/>
-                                            <GradientStop Color="#D000FF" Offset="1"/>
+                                            
                                         </LinearGradientBrush>
                                     </Rectangle.Fill>
                                 </Rectangle>
 
                                 <TextBlock Text="IDENTIFICATION / USERNAME" Foreground="#60FFFFFF" FontSize="9" FontWeight="Bold" Margin="0,0,0,8"/>
                                 <Border CornerRadius="10" Background="#15000000" BorderThickness="1" BorderBrush="#00FFFF" Margin="0,0,0,20">
+                                    
                                     <TextBox x:Name="UserNameTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="12,0" CaretBrush="#00FFFF"/>
                                 </Border>
 
                                 <TextBlock Text="SECURITY KEY / PASSWORD" Foreground="#60FFFFFF" FontSize="9" FontWeight="Bold" Margin="0,0,0,8"/>
-                                <Border CornerRadius="10" Background="#15000000" BorderThickness="1" BorderBrush="#D000FF" Margin="0,0,0,30">
-                                    <PasswordBox x:Name="PasswordTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="12,0" CaretBrush="#D000FF"/>
+                                <Border CornerRadius="10" Background="#15000000" BorderThickness="1" BorderBrush="#00FFFF" Margin="0,0,0,20">
+                                    <PasswordBox x:Name="PasswordTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="12,0" CaretBrush="#00FFFF"/>
                                 </Border>
 
                                 <Button x:Name="UserButton" Click="UserButton_Click" Height="45" Cursor="Hand" BorderThickness="0" Margin="0,0,0,15">
@@ -91,7 +93,7 @@
                                             </Border>
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter TargetName="btnBorder" Property="Background" Value="#D000FF"/>
+                                                    <Setter TargetName="btnBorder" Property="Background" Value="#00FFFF"/>
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>

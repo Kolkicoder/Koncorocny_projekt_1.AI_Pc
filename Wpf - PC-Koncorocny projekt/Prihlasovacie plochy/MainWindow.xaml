@@ -25,7 +25,7 @@
                             <Ellipse.Stroke>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                     <GradientStop Color="#00FFFF" Offset="0"/>
-                                    <GradientStop Color="#D000FF" Offset="1"/>
+                                    
                                 </LinearGradientBrush>
                             </Ellipse.Stroke>
                             <Ellipse.Effect>

@@ -5,6 +5,34 @@
         WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize">
 
     <Window.Resources>
+        <Style x:Key="NavButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#60FFFFFF"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="25,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="BtnBorder" Background="{TemplateBinding Background}" CornerRadius="15" Padding="{TemplateBinding Padding}" Margin="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Background" Value="#20FFFFFF"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="Tag" Value="Active">
+                                <Setter TargetName="BtnBorder" Property="Background" Value="#3000FFFF"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <DataTemplate x:Key="NeonResultTemplate">
             <Border Background="#0DFFFFFF" CornerRadius="20" Margin="12" Padding="20" Width="320" Height="200" BorderThickness="1.5">
                 <Border.BorderBrush>
@@ -45,11 +73,11 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Row="0" HorizontalAlignment="Center" Background="#15FFFFFF" CornerRadius="20" Padding="5">
+            <Border Grid.Row="0" HorizontalAlignment="Center" CornerRadius="22" Padding="3" Background="#15FFFFFF" BorderBrush="#33FFFFFF" BorderThickness="1">
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="CLASSIC" Background="#3000FFFF" Foreground="White" BorderThickness="0" Padding="20,8" Margin="2"/>
-                    <Button Content="INCOGNITO" Background="Transparent" Foreground="#60FFFFFF" BorderThickness="0" Padding="20,8" Margin="2"/>
-                    <Button Content="AI ASSISTANT" Background="Transparent" Foreground="#60FFFFFF" BorderThickness="0" Padding="20,8" Margin="2"/>
+                    <Button Content="CLASSIC" Style="{StaticResource NavButtonStyle}" />
+                    <Button Content="REŽIM INKOGNITO" Style="{StaticResource NavButtonStyle}"/>
+                    <Button Content="AI ASSISTANT" Style="{StaticResource NavButtonStyle}" Click="Button_Click"/>
                 </StackPanel>
             </Border>
 
@@ -57,9 +85,7 @@
                 <TextBlock Text="Krionix" FontSize="100" FontWeight="Black" HorizontalAlignment="Center">
                     <TextBlock.Foreground>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                            <GradientStop Color="White" Offset="0"/>
                             <GradientStop Color="#00FFFF" Offset="0.5"/>
-                            <GradientStop Color="#D000FF" Offset="1"/>
                         </LinearGradientBrush>
                     </TextBlock.Foreground>
                     <TextBlock.Effect>
@@ -71,7 +97,6 @@
                     <Border.BorderBrush>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                             <GradientStop Color="#00FFFF" Offset="0"/>
-                            <GradientStop Color="#D000FF" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.BorderBrush>
                     <Grid Margin="20,0">
@@ -81,7 +106,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="🔍" Foreground="White" Opacity="0.6" VerticalAlignment="Center" FontSize="18" Margin="0,0,15,0"/>
-                        <TextBox x:Name="SearchInput" Grid.Column="1" Background="Transparent" BorderThickness="0" Foreground="White" VerticalAlignment="Center" FontSize="18" CaretBrush="Cyan" KeyDown="SearchInput_KeyDown"/>
+                        <TextBox x:Name="SearchInput" Grid.Column="1" Background="Transparent" BorderThickness="0" Foreground="White" VerticalAlignment="Center" FontSize="18" CaretBrush="PapayaWhip" KeyDown="SearchInput_KeyDown"/>
                         <TextBlock Grid.Column="2" Text="✨" Foreground="#D000FF" VerticalAlignment="Center" FontSize="22"/>
                     </Grid>
                 </Border>
@@ -96,10 +121,5 @@
                 </ListBox.ItemsPanel>
             </ListBox>
         </Grid>
-
-        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30" Orientation="Horizontal" Opacity="0.6">
-            <Ellipse Width="10" Height="10" Fill="#00FF88" Margin="0,0,10,0"/>
-            <TextBlock Text="SECURE KRIONIX NODE ACTIVE" Foreground="White" FontSize="10" FontWeight="Bold" />
-        </StackPanel>
     </Grid>
 </Window>

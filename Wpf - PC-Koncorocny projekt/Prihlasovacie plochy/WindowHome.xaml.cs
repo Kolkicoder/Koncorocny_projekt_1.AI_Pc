@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +18,8 @@ namespace Wpf___PC_Koncorocny_projekt
     /// Interaction logic for Window1.xaml
     /// </summary>
     public partial class WindowHome : Window
-    {
+    {      
+
         public WindowHome()
         {
             InitializeComponent();
@@ -58,11 +60,29 @@ namespace Wpf___PC_Koncorocny_projekt
             pexesoWindow.Show();
             this.Close();
         }
-        
+
+        private void SpotifyButton_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "\"C:\\Users\\notebook\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Spotify.lnk\"",
+                UseShellExecute = true
+            });
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+       
     }
 }
 
-
-   
+    
 
 
