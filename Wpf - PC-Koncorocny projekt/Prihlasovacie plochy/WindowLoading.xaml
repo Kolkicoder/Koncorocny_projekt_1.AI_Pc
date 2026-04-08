@@ -24,9 +24,10 @@
             <TextBlock Text="KRIONIX OS" FontSize="72" FontWeight="Black" HorizontalAlignment="Center" Margin="0,-15,0,0">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                        <GradientStop Color="White" Offset="0"/>
                         
-                        
+                        <GradientStop Color="#00FFFF" Offset="0.5"/>
+
+
                     </LinearGradientBrush>
                 </TextBlock.Foreground>
                 <TextBlock.Effect>
@@ -76,7 +77,7 @@
         </StackPanel>
 
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="40" Opacity="0.4">
-            <TextBlock Text="CORE KERNEL v4.0.2 // STABLE CONNECTION" Foreground="White" FontSize="9" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+            
         </StackPanel>
         <TextBox HorizontalAlignment="Left" Margin="-193,-70,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
     </Grid>
