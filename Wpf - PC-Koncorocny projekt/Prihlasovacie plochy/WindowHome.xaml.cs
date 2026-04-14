@@ -18,7 +18,7 @@ namespace Wpf___PC_Koncorocny_projekt
     /// Interaction logic for Window1.xaml
     /// </summary>
     public partial class WindowHome : Window
-    {      
+    {
 
         public WindowHome()
         {
@@ -63,7 +63,7 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void SpotifyButton_Click(object sender, RoutedEventArgs e)
         {
-          
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -76,8 +76,8 @@ namespace Wpf___PC_Koncorocny_projekt
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
+        { 
+           
         }
        
     }
