@@ -3,9 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Krionix Auth" Height="500" Width="800"
         WindowState="Maximized" WindowStyle="None" Background="#020205"
-        KeyDown="Window_KeyDown">
-    <!-- Pridaný event pre prebudenie -->
-
+        KeyDown="Window_KeyDown" PreviewMouseDown="Window_PreviewMouseDown">
     <Window.Resources>
         <Storyboard x:Key="RotateLoading">
             <DoubleAnimation Storyboard.TargetName="LoadingRotateTransform" 
@@ -45,7 +43,7 @@
                         <Border.BorderBrush>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#00FFFF" Offset="0"/>
-                               
+
                             </LinearGradientBrush>
                         </Border.BorderBrush>
                         <Border.Effect>
@@ -59,8 +57,8 @@
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
 
                                             <GradientStop Color="White" Offset="0.5"/>
-                                            
-                                            
+
+
                                         </LinearGradientBrush>
                                     </TextBlock.Foreground>
                                 </TextBlock>
@@ -69,14 +67,14 @@
                                     <Rectangle.Fill>
                                         <LinearGradientBrush>
                                             <GradientStop Color="#00FFFF" Offset="0"/>
-                                            
+
                                         </LinearGradientBrush>
                                     </Rectangle.Fill>
                                 </Rectangle>
 
                                 <TextBlock Text="IDENTIFICATION / USERNAME" Foreground="#60FFFFFF" FontSize="9" FontWeight="Bold" Margin="0,0,0,8"/>
                                 <Border CornerRadius="10" Background="#15000000" BorderThickness="1" BorderBrush="#00FFFF" Margin="0,0,0,20">
-                                    
+
                                     <TextBox x:Name="UserNameTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="12,0" CaretBrush="#00FFFF"/>
                                 </Border>
 
@@ -121,7 +119,7 @@
                         </Grid>
                     </Border>
 
-                    <Button x:Name="SetingButton" Click="SetingButton_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30" Width="50" Height="50" Background="#15FFFFFF" BorderThickness="1" BorderBrush="#30FFFFFF">
+                    <Button x:Name="SetingButton" Click="SetingButton_Click" PreviewMouseDown="SetingButton_PreviewMouseDown" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30" Width="50" Height="50" Background="#15FFFFFF" BorderThickness="1" BorderBrush="#30FFFFFF">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25"/>
@@ -143,14 +141,14 @@
                     </Border>
                 </Grid>
 
-                <!-- MODAL OKNO PRE REGISTRÁCIU -->
+
                 <Grid x:Name="NewUserModal" Visibility="Collapsed">
                     <Grid.Background>
                         <SolidColorBrush Color="Black" Opacity="0.8"/>
                     </Grid.Background>
-                    <Border Width="350" Height="450" Background="#1A1A2E" CornerRadius="20" BorderBrush="#D000FF" BorderThickness="1.5" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Border Width="350" Height="450" Background="#1A1A2E" CornerRadius="20" BorderBrush="#00FFFF" BorderThickness="1.5" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Border.Effect>
-                            <DropShadowEffect Color="#D000FF" BlurRadius="30" Opacity="0.4" ShadowDepth="0"/>
+                            <DropShadowEffect Color="#00FFFF" BlurRadius="30" Opacity="0.4" ShadowDepth="0"/>
                         </Border.Effect>
                         <StackPanel Margin="30">
                             <TextBlock Text="NEW SESSION / REGISTRATION" Foreground="#00FFFF" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,25"/>
@@ -161,13 +159,13 @@
                             </Border>
 
                             <TextBlock Text="NEW PASSWORD" Foreground="#60FFFFFF" FontSize="9" Margin="0,0,0,5"/>
-                            <Border CornerRadius="8" Background="#10FFFFFF" BorderThickness="0,0,0,1" BorderBrush="#D000FF" Margin="0,0,0,15">
+                            <Border CornerRadius="8" Background="#10FFFFFF" BorderThickness="0,0,0,1" BorderBrush="#00FFFF" Margin="0,0,0,15">
                                 <PasswordBox x:Name="NewPassTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="10,0" CaretBrush="White"/>
                             </Border>
 
                             <!-- POTVRDENIE HESLA -->
                             <TextBlock Text="CONFIRM PASSWORD" Foreground="#60FFFFFF" FontSize="9" Margin="0,0,0,5"/>
-                            <Border CornerRadius="8" Background="#10FFFFFF" BorderThickness="0,0,0,1" BorderBrush="#D000FF" Margin="0,0,0,20">
+                            <Border CornerRadius="8" Background="#10FFFFFF" BorderThickness="0,0,0,1" BorderBrush="#00FFFF" Margin="0,0,0,20">
                                 <PasswordBox x:Name="ConfirmPassTxt" Background="Transparent" Foreground="White" BorderThickness="0" Height="38" VerticalContentAlignment="Center" Padding="10,0" CaretBrush="White"/>
                             </Border>
 
@@ -176,12 +174,12 @@
                                 <Button x:Name="ConfirmRegistrationBtn" Click="ConfirmRegistrationBtn_Click" Cursor="Hand" BorderThickness="0">
                                     <Button.Template>
                                         <ControlTemplate TargetType="Button">
-                                            <Border Background="#D000FF" CornerRadius="8">
+                                            <Border Background="#00FFFF" CornerRadius="8">
                                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Button.Template>
-                                    <TextBlock Text="REGISTER" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock Text="REGISTER" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Button>
                             </UniformGrid>
                         </StackPanel>

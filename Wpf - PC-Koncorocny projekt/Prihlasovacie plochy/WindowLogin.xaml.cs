@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
+using System.Windows.Media;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
@@ -20,7 +20,7 @@ namespace Wpf___PC_Koncorocny_projekt
 
     public partial class WindowLogin : Window
     {
-        private string jsonPath = "users.json";
+        private readonly string _jsonPath = System.IO.Path.Combine(AppContext.BaseDirectory, "users.json");
 
         public WindowLogin()
         {
@@ -34,7 +34,7 @@ namespace Wpf___PC_Koncorocny_projekt
 
             if (string.IsNullOrWhiteSpace(inputUser) || string.IsNullOrWhiteSpace(inputPass))
             {
-                MessageBox.Show("Please enter both username and password.", "Security", MessageBoxButton.OK, MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show("Please enter both username and password.", "Security", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -48,13 +48,13 @@ namespace Wpf___PC_Koncorocny_projekt
 
                 await Task.Delay(3000);
 
-                WindowHome home = new WindowHome();
+                var home = new WindowHome();
                 home.Show();
-                this.Close();
+                Close();
             }
             else
             {
-                MessageBox.Show("Invalid credentials. Please register if you are a new operator.", "Access Denied", MessageBoxButton.OK, MessageBoxImage.Stop);
+                System.Windows.MessageBox.Show("Invalid credentials. Please register if you are a new operator.", "Access Denied", MessageBoxButton.OK, MessageBoxImage.Stop);
             }
         }
 
@@ -62,64 +62,86 @@ namespace Wpf___PC_Koncorocny_projekt
         {
             string newUser = NewUserTxt.Text;
             string newPass = NewPassTxt.Password;
-            string confirmPass = ConfirmPassTxt.Password; // Načítanie potvrdenia
+            string confirmPass = ConfirmPassTxt.Password; // confirmation
 
             if (string.IsNullOrWhiteSpace(newUser) || string.IsNullOrWhiteSpace(newPass))
             {
-                MessageBox.Show("Registration failed. Data missing.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Registration failed. Data missing.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            // OVERENIE ZHODY HESIEL
             if (newPass != confirmPass)
             {
-                MessageBox.Show("Passwords do not match!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show("Passwords do not match!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             try
             {
-                List<UserCredentials> users = LoadUsers();
+                var users = LoadUsers();
 
-                if (users.Any(u => u.Username.Equals(newUser, StringComparison.OrdinalIgnoreCase)))
+                // check if username already exists (no LINQ)
+                bool exists = false;
+                foreach (var u in users)
                 {
-                    MessageBox.Show("This operator already exists!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    if (string.Equals(u.Username, newUser, StringComparison.OrdinalIgnoreCase))
+                    {
+                        exists = true;
+                        break;
+                    }
+                }
+
+                if (exists)
+                {
+                    System.Windows.MessageBox.Show("This operator already exists!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
                 users.Add(new UserCredentials { Username = newUser, Password = newPass });
 
                 string jsonString = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(jsonPath, jsonString);
+                File.WriteAllText(_jsonPath, jsonString);
 
-                MessageBox.Show("Operator registered successfully. You can now login.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                System.Windows.MessageBox.Show("Operator registered successfully. You can now login.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 NewUserTxt.Clear();
                 NewPassTxt.Clear();
-                ConfirmPassTxt.Clear(); // Vyčistenie
+                ConfirmPassTxt.Clear(); // cleanup
                 CloseModal_Click(null, null);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"System error: {ex.Message}");
+                // simple error popup - student style
+                System.Windows.MessageBox.Show("System error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private List<UserCredentials> LoadUsers()
         {
-            if (!File.Exists(jsonPath)) return new List<UserCredentials>();
+            if (!File.Exists(_jsonPath)) return new List<UserCredentials>();
             try
             {
-                string jsonString = File.ReadAllText(jsonPath);
+                string jsonString = File.ReadAllText(_jsonPath);
                 return JsonSerializer.Deserialize<List<UserCredentials>>(jsonString) ?? new List<UserCredentials>();
             }
-            catch { return new List<UserCredentials>(); }
+            catch
+            {
+                // if file is corrupted or unreadable, return empty list
+                return new List<UserCredentials>();
+            }
         }
 
         private bool ValidateUser(string user, string pass)
         {
             var users = LoadUsers();
-            return users.Any(u => u.Username == user && u.Password == pass);
+            foreach (var u in users)
+            {
+                if (u.Username == user && u.Password == pass)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
@@ -143,7 +165,7 @@ namespace Wpf___PC_Koncorocny_projekt
         private void Lock_Click(object sender, RoutedEventArgs e)
         {
             PowerMenuOverlay.Visibility = Visibility.Collapsed;
-            MessageBox.Show("The system has been locked.", "Security", MessageBoxButton.OK, MessageBoxImage.Information);
+            System.Windows.MessageBox.Show("The system has been locked.", "Security", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         // UPRAVENÉ TLAČIDLO SLEEP
@@ -154,13 +176,53 @@ namespace Wpf___PC_Koncorocny_projekt
         }
 
         // EVENT PRE PREBUDENIE Z REŽIMU SPÁNKU
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (SleepOverlay.Visibility == Visibility.Visible)
             {
+                // any key wakes up to the login controls
                 SleepOverlay.Visibility = Visibility.Collapsed; // Skryje čiernu plochu
-                // UI sa vráti do stavu Login, keďže okno nebolo zatvorené
+                LoginControls.Visibility = Visibility.Visible;
             }
+        }
+
+        private void Window_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // if sleeping, any mouse click wakes to login controls
+            if (SleepOverlay.Visibility == Visibility.Visible)
+            {
+                SleepOverlay.Visibility = Visibility.Collapsed;
+                LoginControls.Visibility = Visibility.Visible;
+                return;
+            }
+
+            // if overlay is open and user clicks outside of it, close it
+            if (PowerMenuOverlay.Visibility == Visibility.Visible)
+            {
+                // if click happened on the settings button or inside overlay, ignore
+                var src = e.OriginalSource as DependencyObject;
+                if (src != null)
+                {
+                    var parent = src;
+                    while (parent != null)
+                    {
+                        if (parent == SetingButton || parent == PowerMenuOverlay)
+                        {
+                            return; // click inside overlay or on toggle -> do nothing
+                        }
+                        parent = VisualTreeHelper.GetParent(parent);
+                    }
+                }
+
+                PowerMenuOverlay.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void SetingButton_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // toggle overlay directly on mouse down so the window preview won't immediately close it
+            PowerMenuOverlay.Visibility = PowerMenuOverlay.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            e.Handled = true; // stop further processing so Window_PreviewMouseDown doesn't close it
         }
 
         private void Shutdown_Click(object sender, RoutedEventArgs e)

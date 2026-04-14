@@ -24,7 +24,7 @@
             <TextBlock Text="KRIONIX OS" FontSize="72" FontWeight="Black" HorizontalAlignment="Center" Margin="0,-15,0,0">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                        
+
                         <GradientStop Color="#00FFFF" Offset="0.5"/>
 
 
@@ -44,7 +44,7 @@
                     <Rectangle.Fill>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                             <GradientStop Color="#00FFFF" Offset="0"/>
-                            
+
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                     <Rectangle.Effect>
@@ -77,7 +77,7 @@
         </StackPanel>
 
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="40" Opacity="0.4">
-            
+
         </StackPanel>
         <TextBox HorizontalAlignment="Left" Margin="-193,-70,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
     </Grid>

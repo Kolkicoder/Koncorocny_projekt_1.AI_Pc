@@ -5,8 +5,9 @@
     <TargetFramework>net10.0-windows</TargetFramework>
     <RootNamespace>Wpf___PC_Koncorocny_projekt</RootNamespace>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+        <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>	
+        <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
