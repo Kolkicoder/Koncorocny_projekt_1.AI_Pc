@@ -15,9 +15,6 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
-    /// <summary>
-    /// Interaction logic for Google_domov.xaml
-    /// </summary>
 
     public partial class Google_domov : Window
     {
@@ -26,7 +23,7 @@ namespace Wpf___PC_Koncorocny_projekt
             InitializeComponent();
         }
 
-        private void SearchInput_KeyDown(object sender, KeyEventArgs e)
+        private void SearchInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -39,17 +36,25 @@ namespace Wpf___PC_Koncorocny_projekt
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://chat.openai.com", 
+                FileName = "https://chat.openai.com",
                 UseShellExecute = true
             });
         }
 
+        private void BtnCloseGoogle_Click(object sender, RoutedEventArgs e)
+        {
+            // go back to home - close this window and show home
+            var home = new WindowHome();
+            home.Show();
+            this.Close();
+        }
+
     }
-    }
+}
 
 
 
 
-    
+
 
 // HISTORIA VYHLADAVANIA !!!!!

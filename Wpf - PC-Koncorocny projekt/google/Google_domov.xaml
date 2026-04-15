@@ -78,6 +78,8 @@
                     <Button Content="CLASSIC" Style="{StaticResource NavButtonStyle}" />
                     <Button Content="REŽIM INKOGNITO" Style="{StaticResource NavButtonStyle}"/>
                     <Button Content="AI ASSISTANT" Style="{StaticResource NavButtonStyle}" Click="Button_Click"/>
+                    <!-- Close button (X) -->
+
                 </StackPanel>
             </Border>
 
@@ -120,6 +122,10 @@
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>
+            <!-- corner close button (top-right) -->
+            <Button x:Name="BtnCloseGoogle" Content="✖" Width="36" Height="30" Click="BtnCloseGoogle_Click"
+                    HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" FontSize="14"
+                    Background="#16000000" Foreground="White" BorderThickness="0" Padding="0"/>
         </Grid>
     </Grid>
 </Window>

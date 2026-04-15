@@ -2,7 +2,7 @@
 
 namespace Wpf___PC_Koncorocny_projekt
 {
-    public partial class App : Application
+    public partial class App : System.Windows.Application
     {
 
     }

@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading.Tasks;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
@@ -22,13 +23,14 @@ namespace Wpf___PC_Koncorocny_projekt
         }
 
         private async void BtnPower_Click(object sender, RoutedEventArgs e)
-        {            
-            BtnPower.Visibility = Visibility.Collapsed;                       
+        {
+            BtnPower.Visibility = Visibility.Collapsed;
+            // little pause so user sees the power button vanish
             await Task.Delay(5000);
-                       
-            WindowLoading loadingWindow = new WindowLoading();
-            loadingWindow.Show();           
-            this.Close();
+
+            var loadingWindow = new WindowLoading();
+            loadingWindow.Show();
+            Close();
         }
     }
 }

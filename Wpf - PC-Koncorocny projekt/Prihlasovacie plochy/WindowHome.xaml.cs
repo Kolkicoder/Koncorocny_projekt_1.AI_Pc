@@ -14,9 +14,7 @@ using System.Windows.Threading;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
+
     public partial class WindowHome : Window
     {
 
@@ -27,6 +25,54 @@ namespace Wpf___PC_Koncorocny_projekt
 
             BtnGoogle.Click += BtnGoogle_Click;
             BtnPexeso.Click += BtnPexeso_Click;
+
+            UpdateBatteryStatus();
+            var battTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(30) };
+            battTimer.Tick += (s, e) => UpdateBatteryStatus();
+            battTimer.Start();
+        }
+
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (SleepOverlay.Visibility == Visibility.Visible)
+            {
+                var login = new WindowLogin();
+                login.Show();
+                this.Close();
+            }
+        }
+
+        private void SetingButton_Click(object sender, RoutedEventArgs e)
+        {
+            PowerMenuOverlay.Visibility = PowerMenuOverlay.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private void Lock_Click(object sender, RoutedEventArgs e)
+        {
+            PowerMenuOverlay.Visibility = Visibility.Collapsed;
+            var login = new WindowLogin();
+            login.Show();
+            this.Close();
+        }
+
+        private void Sleep_Click(object sender, RoutedEventArgs e)
+        {
+            PowerMenuOverlay.Visibility = Visibility.Collapsed;
+            SleepOverlay.Visibility = Visibility.Visible;
+        }
+
+        private void Shutdown_Click(object sender, RoutedEventArgs e)
+        {
+            var mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }
+
+        private void Restart_Click(object sender, RoutedEventArgs e)
+        {
+            var loading = new WindowLoading();
+            loading.Show();
+            this.Close();
         }
 
         private void StartClockLogic()
@@ -48,7 +94,8 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void BtnGoogle_Click(object sender, RoutedEventArgs e)
         {
-            Window googleWindow = new Google_domov();
+            // ensure only one window is visible: open google and close home
+            var googleWindow = new Google_domov();
             googleWindow.Show();
             this.Close();
         }
@@ -56,8 +103,12 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void BtnPexeso_Click(object sender, RoutedEventArgs e)
         {
-            Window pexesoWindow = new Window();
-            pexesoWindow.Show();
+            // open the game in a dedicated window and make it full screen
+            var game = new WindowGame();
+            game.WindowState = WindowState.Maximized;
+            game.WindowStyle = WindowStyle.None;
+            game.ResizeMode = ResizeMode.NoResize;
+            game.Show();
             this.Close();
         }
 
@@ -75,14 +126,70 @@ namespace Wpf___PC_Koncorocny_projekt
             });
         }
 
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        { 
-           
+        private void UpdateBatteryStatus()
+        {
+            try
+            {
+                var p = System.Windows.Forms.SystemInformation.PowerStatus;
+                int percent = (int)(p.BatteryLifePercent * 100);
+                TxtBattery.Text = $"🔋 {percent}%";
+            }
+            catch
+            {
+                TxtBattery.Text = "🔋 N/A";
+            }
         }
-       
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // toggle power menu when left green area clicked
+            PowerMenuOverlay.Visibility = PowerMenuOverlay.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            e.Handled = true; // prevent the window preview handler from immediately closing it
+        }
+
+        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+
+
+
+
+
+
+
+
+
+
+
+
+            if (SleepOverlay.Visibility == Visibility.Visible)
+            {
+                var login = new WindowLogin();
+                login.Show();
+                this.Close();
+                return;
+            }
+
+            if (PowerMenuOverlay.Visibility == Visibility.Visible)
+            {
+                var src = e.OriginalSource as DependencyObject;
+                if (src != null)
+                {
+                    var parent = src;
+                    while (parent != null)
+                    {
+                        if (parent == PowerToggleBorder || parent == PowerMenuOverlay)
+                        {
+                            return; // click inside overlay or on toggle -> do nothing
+                        }
+                        parent = VisualTreeHelper.GetParent(parent);
+                    }
+                }
+
+                PowerMenuOverlay.Visibility = Visibility.Collapsed;
+            }
+        }
+
     }
 }
-
-    
-
 
