@@ -115,10 +115,13 @@
             </StackPanel>
 
             <ListBox Grid.Row="2" x:Name="ResultsDisplay" Background="Transparent" BorderThickness="0" Margin="40,10" 
-                     Visibility="Collapsed" ItemTemplate="{StaticResource NeonResultTemplate}">
+                     Visibility="Collapsed" ItemTemplate="{StaticResource NeonResultTemplate}"
+                     MouseDoubleClick="ResultsDisplay_MouseDoubleClick"
+                     PreviewMouseLeftButtonUp="ResultsDisplay_PreviewMouseLeftButtonUp">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Center"/>
+                        <!-- arrange results in up to 3 columns per row -->
+                        <UniformGrid Columns="3" HorizontalAlignment="Center" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>

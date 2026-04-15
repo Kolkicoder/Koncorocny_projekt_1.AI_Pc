@@ -94,7 +94,7 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void BtnGoogle_Click(object sender, RoutedEventArgs e)
         {
-            // ensure only one window is visible: open google and close home
+            
             var googleWindow = new Google_domov();
             googleWindow.Show();
             this.Close();
@@ -103,7 +103,7 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void BtnPexeso_Click(object sender, RoutedEventArgs e)
         {
-            // open the game in a dedicated window and make it full screen
+           
             var game = new WindowGame();
             game.WindowState = WindowState.Maximized;
             game.WindowStyle = WindowStyle.None;
@@ -142,25 +142,13 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            // toggle power menu when left green area clicked
+            
             PowerMenuOverlay.Visibility = PowerMenuOverlay.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            e.Handled = true; // prevent the window preview handler from immediately closing it
+            e.Handled = true; 
         }
 
         private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-
-
-
-
-
-
-
-
-
-
-
-
 
             if (SleepOverlay.Visibility == Visibility.Visible)
             {
@@ -180,7 +168,7 @@ namespace Wpf___PC_Koncorocny_projekt
                     {
                         if (parent == PowerToggleBorder || parent == PowerMenuOverlay)
                         {
-                            return; // click inside overlay or on toggle -> do nothing
+                            return; 
                         }
                         parent = VisualTreeHelper.GetParent(parent);
                     }
