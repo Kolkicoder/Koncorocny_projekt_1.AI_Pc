@@ -26,10 +26,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3912.50" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="pictures\ChatGPT Image 22. 2. 2026, 13_08_46.png" />
     <Resource Include="pictures\ChatGPT Image 4. 3. 2026, 12_50_39.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
+
+  <!-- keep single WebView2 package reference above -->
 
 </Project>
