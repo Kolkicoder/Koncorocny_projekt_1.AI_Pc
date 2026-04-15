@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Wpf___PC_Koncorocny_projekt"
         mc:Ignorable="d"
         Title="WindowGame" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Black">
         <Button x:Name="BtnGameClose" Content="✖" Click="BtnGameClose_Click" Padding="0" Width="34" Height="28"
                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="8" FontSize="14"
                 Background="#16000000" Foreground="White" BorderThickness="0" Panel.ZIndex="999"/>
