@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
+using System.Diagnostics; // Toto potrebujeme na otvorenie webu
 
 namespace Wpf___PC_Koncorocny_projekt
 {
-
     public partial class Google_domov : Window
     {
         public Google_domov()
@@ -23,38 +12,66 @@ namespace Wpf___PC_Koncorocny_projekt
             InitializeComponent();
         }
 
-        private void SearchInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void BtnClassicMode_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Enter)
-            {
-                ResultsDisplay.Visibility = Visibility.Visible;
-
-            }
+            SearchArea.Visibility = Visibility.Visible;
+            AiOptionsPanel.Visibility = Visibility.Collapsed;
+            if (ResultsDisplay != null) ResultsDisplay.Visibility = Visibility.Collapsed;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnAiAssistantMode_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo
+            SearchArea.Visibility = Visibility.Collapsed;
+            AiOptionsPanel.Visibility = Visibility.Visible;
+            if (ResultsDisplay != null) ResultsDisplay.Visibility = Visibility.Collapsed;
+
+            
+            AiButtonsContainer.Children.Clear();
+
+            
+            CreateAiButton("Gemini", "https://gemini.google.com");
+            CreateAiButton("ChatGPT", "https://chatgpt.com");
+        }
+
+        private void CreateAiButton(string nazov, string url)
+        {
+           
+            System.Windows.Controls.Button btn = new System.Windows.Controls.Button();
+
+            btn.Content = nazov;
+            btn.Width = 200;
+            btn.Height = 80;
+            btn.Margin = new Thickness(10);
+            btn.FontSize = 18;
+            btn.Tag = "Active"; 
+
+          
+            btn.Style = (Style)this.FindResource("NavButtonStyle");
+
+
+            btn.Click += (s, ev) =>
             {
-                FileName = "https://chat.openai.com",
-                UseShellExecute = true
-            });
+                try
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = url,
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show("Chyba pri otváraní webu: " + ex.Message);
+                }
+            };
+
+            
+            AiButtonsContainer.Children.Add(btn);
         }
 
         private void BtnCloseGoogle_Click(object sender, RoutedEventArgs e)
         {
-            // go back to home - close this window and show home
-            var home = new WindowHome();
-            home.Show();
             this.Close();
         }
-
     }
 }
-
-
-
-
-
-
-// HISTORIA VYHLADAVANIA !!!!!

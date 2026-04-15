@@ -170,7 +170,7 @@
                             </Border>
 
                             <UniformGrid Columns="2" Margin="0,15,0,0" Height="45">
-                                <Button Content="CANCEL" Click="CloseModal_Click" Background="Transparent" Foreground="#60FFFFFF" BorderThickness="0" Cursor="Hand"/>
+                                <Button Content="CANCEL" Click="CloseModal_Click"  Background="#00FFFF"  Foreground="Black" BorderThickness="0" Cursor="Hand" />
                                 <Button x:Name="ConfirmRegistrationBtn" Click="ConfirmRegistrationBtn_Click" Cursor="Hand" BorderThickness="0">
                                     <Button.Template>
                                         <ControlTemplate TargetType="Button">
