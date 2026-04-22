@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Diagnostics; 
 using System.Net.Http;
 using System.Security.Policy;
 using System.Text;
@@ -9,7 +9,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Diagnostics; // Toto potrebujeme na otvorenie webu
+using System.Windows.Input;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
@@ -18,7 +18,7 @@ namespace Wpf___PC_Koncorocny_projekt
         public Google_domov()
         {
             InitializeComponent();
-                       
+
             this.Loaded += Google_domov_Loaded;
         }
 
@@ -116,16 +116,25 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void BtnClassicMode_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            // Switch back to classic search UI
+            SearchArea.Visibility = Visibility.Visible;
+            AiOptionsPanel.Visibility = Visibility.Collapsed;
+            ResultsDisplay.Visibility = Visibility.Collapsed;
+        }
+
+        // Handle Enter key in search input to perform search
+        private void SearchInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
             {
                 _ = PerformSearchAsync(SearchInput.Text ?? string.Empty);
 
-            
-            AiButtonsContainer.Children.Clear();
+                var container = this.FindName("AiButtonsContainer") as System.Windows.Controls.StackPanel;
+                container?.Children.Clear();
 
-            
-            CreateAiButton("Gemini", "https://gemini.google.com");
-            CreateAiButton("ChatGPT", "https://chatgpt.com");
+                CreateAiButton("Gemini", "https://gemini.google.com");
+                CreateAiButton("ChatGPT", "https://chatgpt.com");
+            }
         }
 
         private void CreateAiButton(string nazov, string url)
@@ -160,8 +169,23 @@ namespace Wpf___PC_Koncorocny_projekt
                 }
             };
 
-            
-            AiButtonsContainer.Children.Add(btn);
+            var container = this.FindName("AiButtonsContainer") as System.Windows.Controls.StackPanel;
+            if (container != null)
+            {
+                container.Children.Add(btn);
+            }
+        }
+
+        private void BtnAiAssistantMode_Click(object sender, RoutedEventArgs e)
+        {
+            // Show AI options and hide search area
+            SearchArea.Visibility = Visibility.Collapsed;
+            AiOptionsPanel.Visibility = Visibility.Visible;
+
+            var container = this.FindName("AiButtonsContainer") as System.Windows.Controls.StackPanel;
+            container?.Children.Clear();
+            CreateAiButton("Gemini", "https://gemini.google.com");
+            CreateAiButton("ChatGPT", "https://chatgpt.com");
         }
 
         private void ResultsDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
