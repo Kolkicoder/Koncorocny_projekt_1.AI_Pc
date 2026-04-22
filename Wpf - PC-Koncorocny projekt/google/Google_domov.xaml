@@ -106,7 +106,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="🔍" Foreground="White" Opacity="0.6" VerticalAlignment="Center" FontSize="18" Margin="0,0,15,0"/>
-                        <TextBox x:Name="SearchInput" Grid.Column="1" Background="Transparent" BorderThickness="0" Foreground="White" VerticalAlignment="Center" FontSize="18" CaretBrush="PapayaWhip" />
+                        <TextBox x:Name="SearchInput" Grid.Column="1" Background="Transparent" BorderThickness="0" Foreground="White" VerticalAlignment="Center" FontSize="18" CaretBrush="PapayaWhip" KeyDown="SearchInput_KeyDown"/>
                         <TextBlock Grid.Column="2" Text="✨" Foreground="#D000FF" VerticalAlignment="Center" FontSize="22"/>
                     </Grid>
                 </Border>
@@ -122,8 +122,7 @@
                      MouseDoubleClick="ResultsDisplay_MouseDoubleClick"
                      PreviewMouseLeftButtonUp="ResultsDisplay_PreviewMouseLeftButtonUp">
                 <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <!-- arrange results in up to 3 columns per row -->
+                    <ItemsPanelTemplate>                        
                         <UniformGrid Columns="3" HorizontalAlignment="Center" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>

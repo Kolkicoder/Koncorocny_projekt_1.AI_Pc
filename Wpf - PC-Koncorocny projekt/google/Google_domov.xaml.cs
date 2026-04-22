@@ -9,7 +9,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Diagnostics; // Toto potrebujeme na otvorenie webu
+using System.Windows.Input;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
@@ -18,7 +18,7 @@ namespace Wpf___PC_Koncorocny_projekt
         public Google_domov()
         {
             InitializeComponent();
-                       
+
             this.Loaded += Google_domov_Loaded;
         }
 
@@ -40,7 +40,7 @@ namespace Wpf___PC_Koncorocny_projekt
                 string response = await client.GetStringAsync(url);
 
                 var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-               
+
                 options.Converters.Add(new NumberToStringConverter());
                 DuckDuckGoResponse? ddg = null;
                 try
@@ -49,7 +49,7 @@ namespace Wpf___PC_Koncorocny_projekt
                 }
                 catch (JsonException jex)
                 {
-                   
+
                     string snippet = response?.Length > 2000 ? response.Substring(0, 2000) + "..." : response;
                     System.Windows.MessageBox.Show($"JSON parse error: {jex.Message}\n\nResponse snippet:\n{snippet}");
                     return;
@@ -99,7 +99,7 @@ namespace Wpf___PC_Koncorocny_projekt
 
                 if (results.Count == 0)
                 {
-                    
+
                     string heading = ddg?.Heading ?? "(no heading)";
                     string abstractText = ddg?.AbstractText ?? ddg?.Abstract ?? "(no abstract)";
                     int relatedCount = ddg?.RelatedTopics?.Count ?? 0;
@@ -116,21 +116,30 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void BtnClassicMode_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            // Switch back to classic search UI
+            SearchArea.Visibility = Visibility.Visible;
+            AiOptionsPanel.Visibility = Visibility.Collapsed;
+            ResultsDisplay.Visibility = Visibility.Collapsed;
+        }
+
+        // Handle Enter key in search input to perform search
+        private void SearchInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
             {
                 _ = PerformSearchAsync(SearchInput.Text ?? string.Empty);
 
-            
-            AiButtonsContainer.Children.Clear();
+                var container = this.FindName("AiButtonsContainer") as System.Windows.Controls.StackPanel;
+                container?.Children.Clear();
 
-            
-            CreateAiButton("Gemini", "https://gemini.google.com");
-            CreateAiButton("ChatGPT", "https://chatgpt.com");
+                CreateAiButton("Gemini", "https://gemini.google.com");
+                CreateAiButton("ChatGPT", "https://chatgpt.com");
+            }
         }
 
         private void CreateAiButton(string nazov, string url)
         {
-           
+
             System.Windows.Controls.Button btn = new System.Windows.Controls.Button();
 
             btn.Content = nazov;
@@ -138,9 +147,9 @@ namespace Wpf___PC_Koncorocny_projekt
             btn.Height = 80;
             btn.Margin = new Thickness(10);
             btn.FontSize = 18;
-            btn.Tag = "Active"; 
+            btn.Tag = "Active";
 
-          
+
             btn.Style = (Style)this.FindResource("NavButtonStyle");
 
 
@@ -160,14 +169,28 @@ namespace Wpf___PC_Koncorocny_projekt
                 }
             };
 
-            
-            AiButtonsContainer.Children.Add(btn);
+            var container = this.FindName("AiButtonsContainer") as System.Windows.Controls.StackPanel;
+            if (container != null)
+            {
+                container.Children.Add(btn);
+            }
+        }
+
+        private void BtnAiAssistantMode_Click(object sender, RoutedEventArgs e)
+        {            
+            SearchArea.Visibility = Visibility.Collapsed;
+            AiOptionsPanel.Visibility = Visibility.Visible;
+
+            var container = this.FindName("AiButtonsContainer") as System.Windows.Controls.StackPanel;
+            container?.Children.Clear();
+            CreateAiButton("Gemini", "https://gemini.google.com");
+            CreateAiButton("ChatGPT", "https://chatgpt.com");
         }
 
         private void ResultsDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (ResultsDisplay.SelectedItem is SearchResult sr)
-            {                
+            {
                 if (!string.IsNullOrEmpty(sr.Link))
                 {
                     var detail = new SearchDetailWindow(sr.Link)
@@ -181,11 +204,9 @@ namespace Wpf___PC_Koncorocny_projekt
                 }
             }
         }
-
-        // also open detail on single click (so it opens directly without showing intermediate window)
+       
         private void ResultsDisplay_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            // find the item under mouse
+        {            
             if (e.Source is FrameworkElement fe && fe.DataContext is SearchResult sr)
             {
                 if (!string.IsNullOrEmpty(sr.Link))
@@ -212,6 +233,3 @@ namespace Wpf___PC_Koncorocny_projekt
     }
 }
 
-
-
-// HISTORIA VYHLADAVANIA !!!!!
