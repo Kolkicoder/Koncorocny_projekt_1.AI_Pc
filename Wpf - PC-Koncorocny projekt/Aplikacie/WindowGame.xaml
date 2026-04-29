@@ -13,7 +13,12 @@
         <Button x:Name="BtnGameClose" Content="✖" Click="BtnGameClose_Click" Padding="0" Width="34" Height="28"
                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="8" FontSize="14"
                 Background="White" Foreground="Black" BorderThickness="0" Panel.ZIndex="999"/>
-        <Button x:Name="ButtonGame1" Content="" HorizontalAlignment="Left" Margin="100,150,0,0" VerticalAlignment="Top" Height="750" RenderTransformOrigin="-0.404,0.505" Width="750" OpacityMask="Black" Click="ButtonGame1_Click"/>
-        <Button x:Name="ButtonGame2" Content="" HorizontalAlignment="Right" Margin="419,150,100,0" VerticalAlignment="Top" Height="750" Width="750" Click="ButtonGame2_Click"/>       
+        
+        <Button x:Name="ButtonGame1" Content="" HorizontalAlignment="Left" Margin="100,200,0,100" VerticalAlignment="Top" Height="600" Width="600" OpacityMask="Black" Click="ButtonGame1_Click"/>
+        <Image  x:Name="ImageButton1" 
+                HorizontalAlignment="Left" Margin="100,200,0,100" VerticalAlignment="Top" Height="600" RenderTransformOrigin="0.0,0.0" Width="600" OpacityMask="Black"/>
+        
+        <Button x:Name="ButtonGame2" Content="" HorizontalAlignment="Right" Margin="0,200,100,100" VerticalAlignment="Top" Height="600" Width="600" OpacityMask="Black" Click="ButtonGame2_Click"/> 
+        
     </Grid>
 </Window>

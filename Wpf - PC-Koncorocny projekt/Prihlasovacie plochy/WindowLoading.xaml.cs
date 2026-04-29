@@ -12,7 +12,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Wpf___PC_Koncorocny_projekt
+namespace Prihlasovacie_plochy
 {
 
     public partial class WindowLoading : Window

@@ -10,7 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading.Tasks;
 
-namespace Wpf___PC_Koncorocny_projekt
+namespace Prihlasovacie_plochy
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

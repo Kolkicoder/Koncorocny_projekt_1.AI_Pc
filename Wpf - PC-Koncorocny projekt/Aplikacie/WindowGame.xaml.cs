@@ -10,6 +10,7 @@ using System.Windows.Media;
 using Brushes = System.Windows.Media.Brushes;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
@@ -44,5 +45,6 @@ namespace Wpf___PC_Koncorocny_projekt
             WindowHardPexeso hardPexeso = new WindowHardPexeso();
             hardPexeso.Show();
         }
+        
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Media;
 
-namespace Wpf___PC_Koncorocny_projekt
+namespace Prihlasovacie_plochy
 {
     public class UserCredentials
     {

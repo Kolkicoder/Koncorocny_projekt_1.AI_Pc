@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using System;
 using System.Windows;
 
 namespace Wpf___PC_Koncorocny_projekt
@@ -11,8 +10,9 @@ namespace Wpf___PC_Koncorocny_projekt
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-
+            // Instantiate main window directly to avoid pack URI/resource lookup errors
+            var main = new Prihlasovacie_plochy.MainWindow();
+            main.Show();
         }
     }
-
-}
+}}
