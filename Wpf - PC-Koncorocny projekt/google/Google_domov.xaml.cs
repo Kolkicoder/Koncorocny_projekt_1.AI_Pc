@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Diagnostics; 
 using System.Net.Http;
 using System.Security.Policy;
 using System.Text;
@@ -177,7 +177,8 @@ namespace Wpf___PC_Koncorocny_projekt
         }
 
         private void BtnAiAssistantMode_Click(object sender, RoutedEventArgs e)
-        {            
+        {
+            // Show AI options and hide search area
             SearchArea.Visibility = Visibility.Collapsed;
             AiOptionsPanel.Visibility = Visibility.Visible;
 
