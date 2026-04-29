@@ -26,5 +26,10 @@ namespace Wpf___PC_Koncorocny_projekt
         {
             this.Close();
         }
+
+        private void SampleCard_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

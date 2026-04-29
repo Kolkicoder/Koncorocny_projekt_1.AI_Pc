@@ -12,6 +12,7 @@
         <Button x:Name="BtnPower" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                 Margin="0,0,50,50" Width="60" Height="60" Cursor="Hand"
                 Visibility="Visible" Click="BtnPower_Click">
+             
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>
