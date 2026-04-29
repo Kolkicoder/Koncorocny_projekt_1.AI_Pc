@@ -21,5 +21,10 @@ namespace Wpf___PC_Koncorocny_projekt
         {
             InitializeComponent();
         }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
