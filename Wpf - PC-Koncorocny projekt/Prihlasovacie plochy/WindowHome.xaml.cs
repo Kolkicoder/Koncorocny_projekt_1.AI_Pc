@@ -94,7 +94,7 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void BtnGoogle_Click(object sender, RoutedEventArgs e)
         {
-            
+
             var googleWindow = new Google_domov();
             googleWindow.Show();
             this.Close();
@@ -103,7 +103,7 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void BtnPexeso_Click(object sender, RoutedEventArgs e)
         {
-           
+
             var game = new WindowGame();
             game.WindowState = WindowState.Maximized;
             game.WindowStyle = WindowStyle.None;
@@ -142,9 +142,9 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+
             PowerMenuOverlay.Visibility = PowerMenuOverlay.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            e.Handled = true; 
+            e.Handled = true;
         }
 
         private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -168,7 +168,7 @@ namespace Wpf___PC_Koncorocny_projekt
                     {
                         if (parent == PowerToggleBorder || parent == PowerMenuOverlay)
                         {
-                            return; 
+                            return;
                         }
                         parent = VisualTreeHelper.GetParent(parent);
                     }
@@ -177,7 +177,23 @@ namespace Wpf___PC_Koncorocny_projekt
                 PowerMenuOverlay.Visibility = Visibility.Collapsed;
             }
         }
-
+        private void TxtFileClick_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                  
+                    FileName = "explorer.exe",
+                   
+                    Arguments = @"C:\Users\notebook\Documents\GitHub\Koncorocny_projekt_1.AI_Pc\Wpf - PC - Koncorocny projekt",
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Nepodarilo sa otevřít složku: {ex.Message}");
+            }
+        }
     }
 }
-

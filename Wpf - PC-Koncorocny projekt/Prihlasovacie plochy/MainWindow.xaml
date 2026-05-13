@@ -15,7 +15,7 @@
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Ellipse Fill="#00FFFF" Opacity="0.4">
+                        <Ellipse Fill="White" Opacity="0.4">
                             <Ellipse.Effect>
                                 <BlurEffect Radius="35"/>
                             </Ellipse.Effect>
@@ -24,12 +24,12 @@
                         <Ellipse StrokeThickness="2.5" Fill="#05FFFFFF">
                             <Ellipse.Stroke>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#00FFFF" Offset="0"/>
+                                    <GradientStop Color="White" Offset="0"/>
 
                                 </LinearGradientBrush>
                             </Ellipse.Stroke>
                             <Ellipse.Effect>
-                                <DropShadowEffect Color="#00FFFF" BlurRadius="10" ShadowDepth="0" Opacity="0.5"/>
+                                <DropShadowEffect Color="White" BlurRadius="10" ShadowDepth="0" Opacity="0.5"/>
                             </Ellipse.Effect>
                         </Ellipse>
 
@@ -40,11 +40,11 @@
                                 <Path.Stroke>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                         <GradientStop Color="White" Offset="0"/>
-                                        <GradientStop Color="#00FFFF" Offset="1"/>
+                                        <GradientStop Color="White" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Path.Stroke>
                                 <Path.Effect>
-                                    <DropShadowEffect Color="#00FFFF" BlurRadius="20" ShadowDepth="0" Opacity="0.9"/>
+                                    <DropShadowEffect Color="White" BlurRadius="20" ShadowDepth="0" Opacity="0.9"/>
                                 </Path.Effect>
                             </Path>
                         </Canvas>

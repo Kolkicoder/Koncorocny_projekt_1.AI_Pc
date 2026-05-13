@@ -33,7 +33,8 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void Karta_Click(object sender, RoutedEventArgs e)
         {
-            image1.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
+            image1.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wp" +
+                " c - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
             image2.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
             image3.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
             image4.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
@@ -51,7 +52,7 @@ namespace Wpf___PC_Koncorocny_projekt
             image16.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
             image17.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
             image18.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image19.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
+            image19.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp")); 
             image20.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
             image21.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
             image22.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));

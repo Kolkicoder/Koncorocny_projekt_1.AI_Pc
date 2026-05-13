@@ -8,8 +8,8 @@
     <Grid>
         <Grid.Background>
             <RadialGradientBrush Center="0.5,0.5" RadiusX="0.8" RadiusY="0.8">
-                <GradientStop Color="#1A1A2E" Offset="0"/>
-                <GradientStop Color="#020205" Offset="1"/>
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="Black" Offset="1"/>
             </RadialGradientBrush>
         </Grid.Background>
 
@@ -17,7 +17,7 @@
 
             <Image Source="/pictures/krionix_logo.png" Stretch="Uniform" Width="320" HorizontalAlignment="Center">
                 <Image.Effect>
-                    <DropShadowEffect Color="#00FFFF" BlurRadius="60" ShadowDepth="0" Opacity="0.5"/>
+                    <DropShadowEffect Color="Gray" BlurRadius="60" ShadowDepth="0" Opacity="0.5"/>
                 </Image.Effect>
             </Image>
 
@@ -25,13 +25,13 @@
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
 
-                        <GradientStop Color="#00FFFF" Offset="0.5"/>
+                        <GradientStop Color="White" Offset="0.5"/>
 
 
                     </LinearGradientBrush>
                 </TextBlock.Foreground>
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="#00FFFF" BlurRadius="40" ShadowDepth="0" Opacity="0.6"/>
+                    <DropShadowEffect Color="White" BlurRadius="40" ShadowDepth="0" Opacity="0.6"/>
                 </TextBlock.Effect>
             </TextBlock>
 
@@ -43,12 +43,12 @@
                 <Rectangle x:Name="ManualProgressBarFill" Width="0" RadiusX="2" RadiusY="2" HorizontalAlignment="Left">
                     <Rectangle.Fill>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                            <GradientStop Color="#00FFFF" Offset="0"/>
+                            <GradientStop Color="White" Offset="0"/>
 
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                     <Rectangle.Effect>
-                        <DropShadowEffect Color="#00FFFF" BlurRadius="15" ShadowDepth="0" Opacity="0.8"/>
+                        <DropShadowEffect Color="White" BlurRadius="15" ShadowDepth="0" Opacity="0.8"/>
                     </Rectangle.Effect>
                 </Rectangle>
             </Grid>
@@ -56,22 +56,21 @@
             <Grid Margin="0,25,0,0" Height="80">
                 <TextBlock x:Name="txtPercent" Text="0%" Foreground="White" HorizontalAlignment="Center" FontSize="28" FontWeight="Light" VerticalAlignment="Center">
                     <TextBlock.Effect>
-                        <DropShadowEffect Color="#00FFFF" BlurRadius="12" ShadowDepth="0"/>
+                        <DropShadowEffect Color="Black" BlurRadius="12" ShadowDepth="0"/>
                     </TextBlock.Effect>
                 </TextBlock>
 
                 <StackPanel x:Name="FinalLoadingArea" Opacity="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="" FontFamily="Segoe MDL2 Assets" Foreground="#D000FF" FontSize="36" 
+                    <TextBlock Text="" FontFamily="Segoe MDL2 Assets" Foreground="Gray" FontSize="36" 
                                 HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
                             <RotateTransform x:Name="SpinnerRotate" Angle="0"/>
                         </TextBlock.RenderTransform>
                         <TextBlock.Effect>
-                            <DropShadowEffect Color="#D000FF" BlurRadius="20" ShadowDepth="0"/>
+                            <DropShadowEffect Color="White" BlurRadius="20" ShadowDepth="0"/>
                         </TextBlock.Effect>
                     </TextBlock>
-                    <TextBlock Text="INITIALIZING GRAPHICAL INTERFACE" Foreground="#00FFFF" FontSize="10" Margin="0,15,0,0" FontWeight="Bold" HorizontalAlignment="Center"/>
-                </StackPanel>
+                                   </StackPanel>
             </Grid>
 
         </StackPanel>
