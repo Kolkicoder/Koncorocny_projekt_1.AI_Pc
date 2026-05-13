@@ -15,7 +15,7 @@ namespace Wpf___PC_Koncorocny_projekt
         }
 
         // Fix pre chybu CS1061 - BtnGameClose_Click
-        private void BtnGameClose_Click(object sender, RoutedEventArgs e)
+        private void BtnGameClose_Click(object sender, RoutedEventArgs e) //sdasda
         {
             var home = new WindowHome();
             home.Show();
