@@ -1,0 +1,98 @@
+<Window x:Class="Wpf___PC_Koncorocny_projekt.WindowEasyPexeso"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf___PC_Koncorocny_projekt"
+        mc:Ignorable="d"
+        Title="Pexeso" Height="700" Width="1100"
+        WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize" Background="#111">
+
+    <Grid>
+        <Button x:Name="BtnClose" Content="✖" Width="40" Height="40" 
+                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15" 
+                Click="BtnClose_Click" Background="Transparent" Foreground="White" 
+                BorderThickness="0" FontSize="20" Cursor="Hand"/>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="PEXESO - EASY" Foreground="White" FontSize="36" FontWeight="Bold" 
+                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+
+            <Border Background="#FF1D1D1D" Padding="10" CornerRadius="10" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+
+                <UniformGrid Columns="6" Rows="6" Width="600" Height="600">
+
+
+                    <Button x:Name="Button1" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image1" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button2" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image2" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button3" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image3" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button4" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image4" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button5" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image5" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button6" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image6" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button7" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image7" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button8" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image8" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button9" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image9" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button10" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image10" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button11" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image11" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button12" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image12" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+
+                    <Button x:Name="Button13" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image13" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button14" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image14" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button15" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image15" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button16" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image16" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button17" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image17" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button18" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image18" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+
+                    <Button x:Name="Button19" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image19" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button20" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image20" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button21" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image21" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button22" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image22" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button23" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click">
+                        <Image x:Name="image23" Source="/pictures/Gemini_Generated_Image_wa55xswa55xswa55.png"/>
+                    </Button>
+                    <Button x:Name="Button24" Margin="3" FontSize="24" Background="#333" Foreground="White" Click="Karta_Click"> (truncated...)
