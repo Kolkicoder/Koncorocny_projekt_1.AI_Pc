@@ -15,4 +15,4 @@ namespace Wpf___PC_Koncorocny_projekt
             main.Show();
         }
     }
-}}
+}

@@ -6,9 +6,13 @@
     <RootNamespace>Wpf___PC_Koncorocny_projekt</RootNamespace>
     <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>	
+    <UseWPF>true</UseWPF>
+	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <UseWindowsForms>true</UseWindowsForms>
+	    
   </PropertyGroup>
+	
+	
 
   <ItemGroup>
     <None Remove="360_F_532772075_m3wMcapw93ZFGWBjs3rCcZG1NJGxeben.jpg" />
@@ -34,6 +38,10 @@
     <Resource Include="pictures\ChatGPT Image 4. 3. 2026, 12_50_39.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Prihlasovacie plochy\" />
   </ItemGroup>
 
   <!-- keep single WebView2 package reference above -->
