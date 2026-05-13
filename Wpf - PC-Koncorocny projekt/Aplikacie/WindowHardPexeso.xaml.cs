@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 namespace Wpf___PC_Koncorocny_projekt
 {
     /// <summary>
-    /// Interaction logic for WindowHardPexeso.xaml
+    /// Interaction logic for WindowHardPexeso.xaml /a
     /// </summary>
     public partial class WindowHardPexeso : Window
     {
