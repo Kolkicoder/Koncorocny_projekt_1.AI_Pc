@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Wpf - PC-Koncorocny projekt": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
