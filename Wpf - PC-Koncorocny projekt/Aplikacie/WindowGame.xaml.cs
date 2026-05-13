@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
@@ -22,11 +14,26 @@ namespace Wpf___PC_Koncorocny_projekt
             InitializeComponent();
         }
 
+        // Fix pre chybu CS1061 - BtnGameClose_Click
         private void BtnGameClose_Click(object sender, RoutedEventArgs e)
         {
             var home = new WindowHome();
             home.Show();
             this.Close();
+        }
+
+        // Fix pre chybu CS1061 - ButtonGame1_Click
+        private void ButtonGame1_Click(object sender, RoutedEventArgs e)
+        {
+            WindowEasyPexeso easyPexeso = new WindowEasyPexeso();
+            easyPexeso.Show();
+        }
+
+        // Metóda pre druhé tlačidlo (ButtonGame2)
+        private void ButtonGame2_Click(object sender, RoutedEventArgs e)
+        {
+            WindowHardPexeso hardPexeso = new WindowHardPexeso();
+            hardPexeso.Show();
         }
     }
 }
