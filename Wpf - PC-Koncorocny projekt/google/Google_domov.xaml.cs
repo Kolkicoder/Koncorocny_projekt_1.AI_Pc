@@ -49,7 +49,6 @@ namespace Wpf___PC_Koncorocny_projekt
                 }
                 catch (JsonException jex)
                 {
-
                     string snippet = response?.Length > 2000 ? response.Substring(0, 2000) + "..." : response;
                     System.Windows.MessageBox.Show($"JSON parse error: {jex.Message}\n\nResponse snippet:\n{snippet}");
                     return;
@@ -105,12 +104,12 @@ namespace Wpf___PC_Koncorocny_projekt
                     int relatedCount = ddg?.RelatedTopics?.Count ?? 0;
                     int resultsCount = ddg?.Results?.Count ?? 0;
 
-                    System.Windows.MessageBox.Show($"No parsed results found.\nHeading: {heading}\nAbstract: {abstractText}\nResults array count: {resultsCount}\nRelatedTopics count: {relatedCount}");
+                    System.Windows.MessageBox.Show($"No parsed results found.\nHeading: {heading}\nAbstract: {abstractText}\nResults array count: {resultsCount}\nRelatedTopics count: {relatedCount}", "Search", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show($"Error fetching data: {ex.Message}");
+                System.Windows.MessageBox.Show($"Error fetching data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

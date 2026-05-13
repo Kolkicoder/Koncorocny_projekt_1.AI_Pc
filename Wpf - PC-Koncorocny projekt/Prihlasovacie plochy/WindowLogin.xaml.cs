@@ -111,7 +111,6 @@ namespace Wpf___PC_Koncorocny_projekt
             }
             catch (Exception ex)
             {
-                // simple error popup - student style
                 System.Windows.MessageBox.Show("System error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

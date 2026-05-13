@@ -1,24 +1,60 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
-
+using System.Windows.Media;
+using System.Windows.Threading;
+using Button = System.Windows.Controls.Button;
+using Color = System.Windows.Media.Color;
 
 namespace Wpf___PC_Koncorocny_projekt
 {
     public partial class WindowEasyPexeso : Window
     {
-        private string obrazok;
-        private string Source;
-        private bool rnd;
-        private int i;
-        private int j;
+        private string _player1Name;
+        private string _player2Name;
+        private int _currentPlayer = 1; // 1 = left player, 2 = right player
+
+        private Dictionary<Button, int> _cardValues;
+        private List<Button> _flipped;
+        private HashSet<Button> _matchedCards;
+        private bool _isBusy;
+        private int _score1;
+        private int _score2;
+
         public WindowEasyPexeso()
         {
             InitializeComponent();
+
+            _player1Name = PlayerName1?.Text ?? "Player1";
+            _player2Name = PlayerName2?.Text ?? "Player2";
+
+            if (PlayerName1 != null) PlayerName1.TextChanged += PlayerName1_TextChanged;
+            if (PlayerName2 != null) PlayerName2.TextChanged += PlayerName2_TextChanged;
+
+            UpdateCurrentPlayerDisplay();
+            InitializeGame();
+        }
+
+        private void PlayerName1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _player1Name = PlayerName1.Text;
+            UpdateCurrentPlayerDisplay();
+        }
+
+        private void PlayerName2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _player2Name = PlayerName2.Text;
+            UpdateCurrentPlayerDisplay();
+        }
+
+        private void UpdateCurrentPlayerDisplay()
+        {
+            var name = _currentPlayer == 1 ? _player1Name : _player2Name;
+            TxtCurrentPlayer.Text = $"Na rade: {name}";
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
@@ -28,66 +64,118 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            // placeholder
         }
 
         private void Karta_Click(object sender, RoutedEventArgs e)
         {
-            image1.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image2.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image3.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image4.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image5.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image6.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image7.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image8.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image9.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image10.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image11.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image12.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image13.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image14.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image15.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image16.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image17.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image18.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image19.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image20.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image21.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image22.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image23.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image24.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image25.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image26.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image27.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image28.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image29.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image30.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image31.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image32.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image33.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image34.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image35.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
-            image36.Source = new BitmapImage(new Uri("C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp"));
+            if (_isBusy) return;
+
+            var btn = sender as Button;
+            if (btn == null) return;
+            if (_matchedCards.Contains(btn)) return;
+            if (_flipped.Contains(btn)) return;
+
+            // reveal (show id as text)
+            btn.Content = _cardValues[btn].ToString();
+            _flipped.Add(btn);
+
+            if (_flipped.Count == 2)
+            {
+                var a = _cardValues[_flipped[0]];
+                var b = _cardValues[_flipped[1]];
+                if (a == b)
+                {
+                    _matchedCards.Add(_flipped[0]);
+                    _matchedCards.Add(_flipped[1]);
+
+                    if (_currentPlayer == 1)
+                    {
+                        _score1++;
+                        PlayerTable1.Content = _score1.ToString();
+                    }
+                    else
+                    {
+                        _score2++;
+                        PlayerTable2.Content = _score2.ToString();
+                    }
+
+                    _flipped[0].IsEnabled = false;
+                    _flipped[1].IsEnabled = false;
+                    _flipped[0].Background = new SolidColorBrush(Color.FromRgb(34, 139, 34));
+                    _flipped[1].Background = new SolidColorBrush(Color.FromRgb(34, 139, 34));
+
+                    _flipped.Clear();
+                    // player stays the same
+                    UpdateCurrentPlayerDisplay();
+
+                    if (_matchedCards.Count >= _cardValues.Count)
+                    {
+                        string winner;
+                        if (_score1 > _score2) winner = _player1Name;
+                        else if (_score2 > _score1) winner = _player2Name;
+                        else winner = "Remíza";
+                        System.Windows.MessageBox.Show($"Koniec hry! Víťaz: {winner}", "Koniec", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                else
+                {
+                    _isBusy = true;
+                    var timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(700) };
+                    timer.Tick += (s, ev) =>
+                    {
+                        timer.Stop();
+                        foreach (var f in _flipped)
+                        {
+                            f.Content = "?";
+                        }
+                        _flipped.Clear();
+                        _isBusy = false;
+                        // switch player
+                        _currentPlayer = _currentPlayer == 1 ? 2 : 1;
+                        UpdateCurrentPlayerDisplay();
+                    };
+                    timer.Start();
+                }
+            }
         }
 
-        public void Add_Image(object sender, RoutedEventArgs e)
+        private void InitializeGame()
         {
-            Random rnd = new Random();
+            _cardValues = new Dictionary<Button, int>();
+            _flipped = new List<Button>();
+            _matchedCards = new HashSet<Button>();
+            _isBusy = false;
+            _score1 = 0;
+            _score2 = 0;
+            PlayerTable1.Content = "0";
+            PlayerTable2.Content = "0";
 
-            for (int i = 0; i < 36; i++)
+            // collect buttons
+            var buttons = new List<Button>();
+            for (int idx = 1; idx <= 36; idx++)
             {
-                string obrazok = $"C:\\Users\\kolku\\source\\repos\\Wpf - PC-Koncorocny projekt\\Wpf - PC-Koncorocny projekt\\pictures\\obrazok1.webp";
+                var btn = this.FindName("Button" + idx) as Button;
+                if (btn != null) buttons.Add(btn);
+            }
 
+            int pairCount = buttons.Count / 2;
+            var ids = new List<int>();
+            for (int id = 1; id <= pairCount; id++)
+            {
+                ids.Add(id);
+                ids.Add(id);
+            }
 
-                int r1 = rnd.Next(1, 20);
-                System.Windows.Controls.Button btn1 = (System.Windows.Controls.Button)this.FindName("Button" + r1);
-                if (btn1 != null) btn1.Content = obrazok;
+            var rnd = new Random();
+            ids = ids.OrderBy(x => rnd.Next()).ToList();
 
-
-                int r2 = rnd.Next(1, 36);
-                System.Windows.Controls.Button btn2 = (System.Windows.Controls.Button)this.FindName("Button" + r2);
-                if (btn2 != null) btn2.Content = obrazok;
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                _cardValues[buttons[i]] = ids[i];
+                buttons[i].Content = "?";
+                buttons[i].IsEnabled = true;
+                buttons[i].Background = new SolidColorBrush(Color.FromRgb(51,51,51));
             }
         }
     }
