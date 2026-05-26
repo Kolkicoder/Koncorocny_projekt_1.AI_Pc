@@ -33,18 +33,13 @@ namespace Wpf___PC_Koncorocny_projekt
 
         private void ButtonGame1_Click(object sender, RoutedEventArgs e)
         {
-           WindowEasyPexeso easyPexeso = new WindowEasyPexeso();
-           easyPexeso.Show();
-           
+            WindowEasyPexeso easyPexeso = new WindowEasyPexeso();
+            easyPexeso.Show();
+
 
 
         }
-
-        private void ButtonGame2_Click(object sender, RoutedEventArgs e)
-        {
-            WindowHardPexeso hardPexeso = new WindowHardPexeso();
-            hardPexeso.Show();
-        }
-        
     }
 }
+
+      
